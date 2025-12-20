@@ -125,7 +125,8 @@ export default function WhatsAppContact() {
           </button>
           <div className="flex items-center justify-center gap-1 mt-3 text-xs text-gray-500">
             <Phone className="h-3 w-3" />
-            <span>+91 96350 13952</span>
+            <span>+91 9330855877
+</span>
           </div>
         </div>
       </div>
