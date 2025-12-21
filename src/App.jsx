@@ -2,7 +2,6 @@ import { useState } from 'react'
 import './App.css'
 import HomePage from './components/Home'
 import Navbar from './components/Navbar'
-// import { Analytics } from "@vercel/analytics/next"
 import {
   BrowserRouter ,
   Routes,
@@ -14,7 +13,6 @@ function App() {
 
   return (
     <>
-      {/* <Analytics /> */}
     <BrowserRouter>
       <Navbar/>
       <Routes>
