@@ -44,7 +44,7 @@ export default function Footer() {
             <div>
               <h4 className="text-lg font-semibold mb-6">Quick Links</h4>
               <ul className="space-y-3">
-                {['Home', 'About', 'Service', 'Contact'].map((link,i) => (
+                {['Home', 'About', 'Service','Contact'].map((link,i) => (
                   <li key={i}>
                     <a href={`#${link.toLocaleLowerCase()}`} onClick={(e) => { handleclick(e,link) }} className="text-gray-400 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                       <span className="w-1.5 h-1.5 rounded-full bg-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
@@ -67,7 +67,7 @@ export default function Footer() {
                   { icon: <Globe />, text: 'Digital & Marketing ', color: 'text-blue-400 ' },
 
                 ].map((service,i) => (
-                  <a href="#services" onClick={handleclick} key={i}><li key={service.text} className=" cursor-pointer flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300 mb-2">
+                  <a href="#service" onClick={handleclick} key={i}><li key={service.text} className=" cursor-pointer flex items-center gap-3 text-gray-400 hover:text-white transition-colors duration-300 mb-2">
                     <span className={`text-lg ${service.color} `}>{service.icon}</span>
                     {service.text}
                   </li>
