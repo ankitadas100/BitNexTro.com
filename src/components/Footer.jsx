@@ -1,6 +1,6 @@
 import React from 'react'
 import logo_final from "../assets/f_logo.jpg"
-import { Award, CloudUpload, Code, Facebook, Globe, Linkedin, Shield, Twitter } from 'lucide-react'
+import { Award, CloudUpload, Code, Facebook, Globe, Linkedin, Shield, Twitter, X } from 'lucide-react'
 export default function Footer() {
     const handleclick = (e,link) => {
     e.preventDefault();
@@ -35,7 +35,7 @@ export default function Footer() {
                   <span className="text-xl"><Linkedin /></span>
                 </a>
                 <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
-                  <span className="text-xl"><Twitter /></span>
+                  <span className="text-xl"><X /></span>
                 </a>
               </div>
             </div>
