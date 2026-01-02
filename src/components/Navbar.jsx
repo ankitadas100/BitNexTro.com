@@ -332,7 +332,7 @@ export default function Navbar() {
               <a
                 href="https://bitnextro.freshdesk.com/support/home"
                 target="_blank"
-                className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
+                className="block px-4 py-2 text-gray-700 hover:text-blue-600"
               >
                 Support
               </a>
