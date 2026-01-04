@@ -7,6 +7,7 @@ import img3 from "../assets/about.jpeg"
 import ServicesSection from './Allservice';
 import ContactSection from './ContactUs';
 import WhatsAppContact from './Wpmessage';
+import App from './ClientHandle';
 const HomePage = () => {
 
   const [scrolled, setScrolled] = useState(false);
@@ -253,41 +254,10 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* <section id="testimonials" data-animate className={`py-20 px-4 bg-gray-50 transition-all duration-1000 ${visibleSections.has('testimonials') ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-linear-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              What Clients Say
-            </h2>
-            <p className="text-gray-600 text-lg">Trusted by businesses worldwide</p>
-          </div>
-
-          <div className="relative ">
-            <div className="flex slide-track">
-              {[...testimonials, ...testimonials].map((testimonial, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 mx-4 min-w-[350px] shrink-0"
-                >
-                  <div className="flex mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
-                    ))}
-                  </div>
-                  <p className="text-gray-600 mb-6 italic">"{testimonial.text}"</p>
-                  <div>
-                    <div className="font-bold">{testimonial.name}</div>
-                    <div className="text-sm text-gray-500">{testimonial.role}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section> */}
+<App/>
 
       {/* Contact Section */}
-      <section id="contact" data-animate className={`    transition-all duration-1000 ${visibleSections.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
+      <section id="contact" data-animate className={`transition-all duration-1000 ${visibleSections.has('contact') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-20'}`}>
         <ContactSection />
       </section>
     </div>
