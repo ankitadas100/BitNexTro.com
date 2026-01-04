@@ -1,65 +1,173 @@
-import React from 'react'
+import React from 'react';
+import { Briefcase, Cpu, ArrowRight, CheckCircle2, Globe, Users, Zap } from 'lucide-react';
 
 export default function Career() {
+  // ---------------------------------------------------------------------------
+  // CONFIGURATION: Update your Google Form URL here
+  // ---------------------------------------------------------------------------
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/u/0/"; 
+
+  const positions = [
+    {
+      title: "Sales Internship",
+      icon: <Briefcase className="w-8 h-8 text-emerald-400" />,
+      type: "Internship",
+      location: "Remote / Hybrid",
+      description: "Drive business growth, build client relationships, and develop your sales expertise in the competitive tech industry.",
+      requirements: [
+        "Strong communication skills",
+        "Lead generation & outreach",
+        "Client relationship management",
+        "Goal-oriented mindset"
+      ],
+      color: "emerald"
+    },
+    {
+      title: "Technical Support Internship",
+      icon: <Cpu className="w-8 h-8 text-blue-400" />,
+      type: "Internship",
+      location: "Remote / Hybrid",
+      description: "Provide exceptional technical assistance, troubleshoot software issues, and ensure customer satisfaction.",
+      requirements: [
+        "Basic IT & networking knowledge",
+        "Troubleshooting software issues",
+        "Customer service skills",
+        "Documentation & reporting"
+      ],
+      color: "blue"
+    }
+  ];
+
+  const perks = [
+    { icon: <Zap className="w-5 h-5" />, label: "High Impact Work" },
+    { icon: <Users className="w-5 h-5" />, label: "Collaborative Team" },
+    { icon: <Globe className="w-5 h-5" />, label: "Remote Options" },
+  ];
+
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 py-24 bg-linear-to-br from-slate-900 via-blue-900 to-indigo-900 text-white">
-      <div className="max-w-4xl text-center">
+    <div className="min-h-screen bg-slate-950 text-white font-sans selection:bg-indigo-500/30">
+      
+      {/* Background Effects */}
+      <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-160 h-160 bg-indigo-900/20 rounded-full blur-[100px] animate-pulse" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-160 h-160 bg-blue-900/20 rounded-full blur-[100px] animate-pulse delay-1000" />
+      </div>
 
-        {/* Badge */}
-        <span className="inline-block mb-6 px-5 py-2 text-sm font-semibold text-green-500 tracking-wide bg-white/10 backdrop-blur-md rounded-full border border-white/20">
-          Careers at BitNextro
-        </span>
-
-        {/* Heading */}
-        <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight">
-          We’re Not Hiring Yet — <br />
-          <span className="bg-linear-to-r from-sky-400 via-orange-400 to-green-400 bg-clip-text text-transparent">
-            But Something Big Is Coming 
-          </span>
-        </h1>
-
-        {/* Description */}
-        <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-10">
-          At <span className="font-semibold text-white">BitNextro Solutions Pvt. Ltd.</span>,
-          we believe great technology is built by curious minds, bold thinkers,
-          and people who love solving real-world problems.
-          <br /><br />
-          We’re currently laying the foundation for an exciting team and will
-          be opening opportunities very soon for passionate individuals ready
-          to shape the future of IT, cybersecurity, and digital innovation.
-        </p>
-
-        {/* Highlight Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          <div className="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
-            <h3 className="text-xl font-bold mb-2">Innovative Work</h3>
-            <p className="text-gray-300 text-sm">
-              Work on next-gen technologies that make a real impact.
-            </p>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-20 lg:py-28">
+        
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 font-medium text-sm mb-8 hover:bg-green-500/20 transition-colors cursor-default">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            Hiring Now: Applications Open
           </div>
-
-          <div className="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
-            <h3 className="text-xl font-bold mb-2">Growth Mindset</h3>
-            <p className="text-gray-300 text-sm">
-              Learn, experiment, and grow with a forward-thinking team.
-            </p>
-          </div>
-
-          <div className="bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/20">
-            <h3 className="text-xl font-bold mb-2">Modern Culture</h3>
-            <p className="text-gray-300 text-sm">
-              A culture that values ideas, ownership, and creativity.
-            </p>
-          </div>
+          
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
+            Build the Future at <br />
+            <span className="bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+              BitNextro Solutions
+            </span>
+          </h1>
+          
+          <p className="text-lg md:text-xl text-slate-400 leading-relaxed">
+            We are looking for curious minds and bold thinkers. Join our team to shape the future of IT, cybersecurity, and digital innovation.
+          </p>
         </div>
 
-        {/* Coming Soon */}
-        <div className="text-lg text-green-400 font-semibold">
-          📢 Hiring will begin very soon. Stay tuned!
+        {/* Job Cards Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-20">
+          {positions.map((job, index) => (
+            <div 
+              key={index}
+              className="group relative bg-slate-900/50 backdrop-blur-xl border border-slate-800 hover:border-indigo-500/50 rounded-3xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-indigo-500/10 hover:-translate-y-1"
+            >
+              <div className="flex items-start justify-between mb-6">
+                <div className="p-3 bg-slate-800 rounded-2xl border border-slate-700 group-hover:scale-110 transition-transform duration-300">
+                  {job.icon}
+                </div>
+                <div className="flex gap-2">
+                  <span className="px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-xs font-medium text-slate-300">
+                    {job.type}
+                  </span>
+                  <span className="px-3 py-1 bg-slate-800 border border-slate-700 rounded-full text-xs font-medium text-slate-300">
+                    {job.location}
+                  </span>
+                </div>
+              </div>
+
+              <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-indigo-400 transition-colors">
+                {job.title}
+              </h3>
+              
+              <p className="text-slate-400 text-sm leading-relaxed mb-6">
+                {job.description}
+              </p>
+
+              <div className="mb-8">
+                <h4 className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Key Responsibilities</h4>
+                <ul className="space-y-2">
+                  {job.requirements.map((req, i) => (
+                    <li key={i} className="flex items-center gap-3 text-sm text-slate-300">
+                      <CheckCircle2 className={`w-4 h-4 text-${job.color}-500 shrink-0`} />
+                      {req}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <a 
+                href={GOOGLE_FORM_URL} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-full gap-2 py-3 px-6 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-medium transition-all group-hover:bg-indigo-600 group-hover:border-indigo-500"
+              >
+                Apply for {job.title.split(' ')[0]}
+                <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
+          ))}
+        </div>
+
+        {/* Culture / CTA Section */}
+        <div className="relative rounded-3xl overflow-hidden bg-linear-to-br from-indigo-900 via-blue-900 to-slate-900 border border-white/10 p-10 md:p-16 text-center">
+          <div className="relative z-10">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Journey?</h2>
+            <p className="text-indigo-100 max-w-2xl mx-auto mb-10 text-lg">
+              Don't miss this opportunity to work with industry experts and kickstart your career in technology.
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-4 mb-10">
+              {perks.map((perk, i) => (
+                <div key={i} className="flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full border border-white/10 text-sm font-medium text-white">
+                  {perk.icon}
+                  {perk.label}
+                </div>
+              ))}
+            </div>
+
+            <a 
+              href={GOOGLE_FORM_URL}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-indigo-950 font-bold rounded-full hover:bg-indigo-50 hover:scale-105 transition-all duration-300 shadow-xl shadow-indigo-900/20"
+            >
+              Apply Now via Google Form
+              <ArrowRight className="w-5 h-5" />
+            </a>
+            
+            <p className="mt-6 text-sm text-indigo-300/80">
+              * Applications are reviewed on a rolling basis.
+            </p>
+          </div>
+          
+          {/* Decorative Grid */}
+          <div className="absolute inset-0 bg-[url('https://grainy-linears.vercel.app/noise.svg')] opacity-20 brightness-100 mix-blend-overlay"></div>
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }
-
