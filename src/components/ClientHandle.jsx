@@ -1,73 +1,113 @@
-import React, { useState, useEffect } from 'react';
-import { Quote } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowRight, Star, ExternalLink, Briefcase } from 'lucide-react';
 import msm from "../assets/msm.png"
-const testimonials = [
+// --- Mock Data ---
+const CLIENTS = [
   {
     id: 1,
     name: "Manmalka Salt Pvt. Ltd.",
-    role: "salt manufacturing company",
-    image: msm,
-    text: "The scalability of this platform is unmatched. We've seen a 40% increase in productivity since integrating these tools into our daily workflow."
+
+    description: "One of the best salt manufacturing & distribution firm India",
+    logo: msm,
+    color: "bg-indigo-50 text-indigo-700",
+    url: "https://www.msmsalt.com/"
   },
 ];
 
-const TestimonialCard = ({ testimonial }) => (
-  <div className="shrink-0 w-[300px] md:w-[400px] p-6 mx-4 bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl shadow-xl hover:border-slate-500 transition-colors duration-300 group">
-    <div className="flex flex-col h-full">
-      <div className="flex items-start justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <img 
-            src={testimonial.image} 
-            alt={testimonial.name}
-            className="w-12 h-12 rounded-full object-cover border-2 border-slate-600 group-hover:border-blue-500 transition-colors"
-          />
-          <div>
-            <h3 className="text-white font-semibold text-sm md:text-base">{testimonial.name}</h3>
-            <p className="text-slate-400 text-xs md:text-sm">{testimonial.role}</p>
-          </div>
-        </div>
-        <Quote className="w-6 h-6 text-slate-600 group-hover:text-blue-500 transition-colors" />
-      </div>
-      <p className="text-slate-300 text-sm md:text-base leading-relaxed grow">
-        "{testimonial.text}"
-      </p>
-    </div>
-  </div>
-);
+const ClientCard = ({ client }) => {
+  const [isHovered, setIsHovered] = useState(false);
 
-const App = () => {
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center py-20 overflow-hidden font-sans">
-      
-      {/* Header Section */}
-      <div className="text-center mb-16 px-4 max-w-2xl mx-auto">
-        <h1 className="text-3xl md:text-5xl font-bold text-white mb-6">
-          Our Client
-        </h1>
-      </div>
+    <div
+      className="group relative rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 overflow-hidden
+                 bg-linear-to-br from-white/80 via-white/50 to-white/30 
+                 backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.05)]
+                 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:border-white/90"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Glossy Top Highlight (The "Sheen") - Simulates overhead light reflection */}
+      <div className="absolute inset-x-0 top-0 h-32 bg-linear-to-b from-white/60 to-transparent opacity-70 pointer-events-none" />
 
-      {/* Marquee Container */}
-      <div className="relative w-full max-w-[1920px]">
-        
-        {/* linear Masks for fading effect at edges */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 z-10 bg-linear-to-r from-slate-950 to-transparent pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 z-10 bg-linear-to-l from-slate-950 to-transparent pointer-events-none" />
+      {/* Internal highlight glow on hover */}
+      <div className={`absolute inset-0 bg-linear-to-br from-white/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
 
-        {/* Scrolling Track */}
-        <div className="flex overflow-hidden group justify-center">
-          {/* Inner container with animation */}
-          {/* We duplicate the set twice to ensure seamless looping */}
-          <div className="flex justify-center"> {/*animate-scroll hover:pause-animation*/}{/*, ...testimonials*/}
-            {[...testimonials].map((testimonial, index) => (
-              <TestimonialCard key={`${testimonial.id}-${index}`} testimonial={testimonial} />
-            ))}
-          </div>
+      {/* Header: Logo & Industry Tag */}
+      <div className="flex items-start justify-center mb-6 relative z-10">
+        <div className={`p-3 rounded-xl ${client.color} bg-opacity-90 shadow-sm transition-transform duration-300 group-hover:scale-110`}>
+          <img className='h-18' src={client.logo} alt="" />
         </div>
       </div>
 
-      {/* CSS for custom animation */}
+      {/* Content */}
+      <div className="relative z-10">
+        <h3 className="text-xl text-center font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors drop-shadow-sm">
+          {client.name}
+        </h3>
+        <p className="text-slate-700 text-sm leading-relaxed mb-6 font-medium">
+          {client.description}
+        </p>
+
+        {/* Footer / Action */}
+        <div className="pt-4 border-t border-slate-200/40 flex items-center justify-between">
+          <a href={client.url} target='_blank'><button className="text-sm font-bold text-slate-900 flex items-center gap-1 group/btn hover:text-blue-600 transition-colors  cursor-pointer">
+            Explore
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+          </button></a>
+        </div>
+      </div>
     </div>
   );
 };
 
-export default App;
+export default function App() {
+  return (
+    <div className="relative min-h-screen bg-slate-50 font-sans text-slate-900 overflow-hidden">
+
+
+      <div className="absolute inset-0 w-full h-full bg-slate-400 z-0">
+        {/* Large flowing blobs */}
+        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-60 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+
+        {/* Additional decorative floating elements */}
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-7xl">
+          <div className="absolute top-1/4 right-10 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
+          <div className="absolute bottom-1/6 left-32 w-48 h-48 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-1/4 right-40 w-48 h-48 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-1/12 right-0 w-48 h-48 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
+        </div>
+      </div>
+
+      {/* --- Main Content --- */}
+      <section className="relative z-10 py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-20">
+          {/* <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/60 backdrop-blur-sm border border-white/20 text-blue-600 text-sm font-semibold mb-6 shadow-sm">
+            <Briefcase className="w-4 h-4" />
+            <span>Portfolio Highlights</span>
+          </div> */}
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
+            Trusted by industry leaders.
+          </h2>
+          <p className="text-lg text-slate-600 leading-8">
+            I partner with forward-thinking companies to build scalable solutions.
+            From early-stage startups to established enterprises, here are a few clients I've had the privilege to help.
+          </p>
+        </div>
+
+        {/* Grid Layout */}
+        {/* <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-4 gap-6"> */}
+        <div className='flex justify-center'>
+          {CLIENTS.map((client) => (
+            <ClientCard key={client.id} client={client} />
+          ))}
+        </div>
+
+
+      </section>
+    </div>
+  );
+}
