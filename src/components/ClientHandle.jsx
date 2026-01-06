@@ -89,10 +89,10 @@ export default function App() {
             <Briefcase className="w-4 h-4" />
             <span>Portfolio Highlights</span>
           </div> */}
-          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight text-slate-900 mb-6">
+          <h2 className="text-3xl md:text-5xl  font-extrabold tracking-tight text-blue-900 mb-6">
             Trusted by industry leaders.
           </h2>
-          <p className="text-lg text-slate-600 leading-8">
+          <p className="text-lg text-black leading-8">
             I partner with forward-thinking companies to build scalable solutions.
             From early-stage startups to established enterprises, here are a few clients I've had the privilege to help.
           </p>
