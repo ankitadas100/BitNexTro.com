@@ -93,8 +93,8 @@ export default function App() {
             Trusted by industry leaders.
           </h2>
           <p className="text-lg text-black leading-8">
-            I partner with forward-thinking companies to build scalable solutions.
-            From early-stage startups to established enterprises, here are a few clients I've had the privilege to help.
+            we partner with forward-thinking companies to build scalable solutions.
+            From early-stage startups to established enterprises.
           </p>
         </div>
 
