@@ -5,7 +5,7 @@ export default function Career() {
   // ---------------------------------------------------------------------------
   // CONFIGURATION: Update your Google Form URL here
   // ---------------------------------------------------------------------------
-  const GOOGLE_FORM_URL = "https://docs.google.com/forms/u/0/"; 
+  const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeTbeJ0pxg5WvL3IP0Sw1mPWr91sBsoRKEkJWLqZapUS1_WkQ/viewform?usp=dialog" 
 
   const positions = [
     {
