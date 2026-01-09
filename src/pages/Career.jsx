@@ -2,16 +2,13 @@ import React from 'react';
 import { Briefcase, Cpu, ArrowRight, CheckCircle2, Globe, Users, Zap } from 'lucide-react';
 
 export default function Career() {
-  // ---------------------------------------------------------------------------
-  // CONFIGURATION: Update your Google Form URL here
-  // ---------------------------------------------------------------------------
   const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/1FAIpQLSeTbeJ0pxg5WvL3IP0Sw1mPWr91sBsoRKEkJWLqZapUS1_WkQ/viewform?usp=dialog" 
 
   const positions = [
     {
-      title: "Sales Internship",
+      title: "Sales Internship / Full time",
       icon: <Briefcase className="w-8 h-8 text-emerald-400" />,
-      type: "Internship",
+      type: "Internship / Full time",
       location: "Remote / Hybrid",
       description: "Drive business growth, build client relationships, and develop your sales expertise in the competitive tech industry.",
       requirements: [
@@ -23,9 +20,9 @@ export default function Career() {
       color: "emerald"
     },
     {
-      title: "Technical Support Internship",
+      title: "Technical Support Internship / Full time",
       icon: <Cpu className="w-8 h-8 text-blue-400" />,
-      type: "Internship",
+      type: "Internship / Full time",
       location: "Remote / Hybrid",
       description: "Provide exceptional technical assistance, troubleshoot software issues, and ensure customer satisfaction.",
       requirements: [
