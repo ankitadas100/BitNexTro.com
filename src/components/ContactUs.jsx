@@ -87,7 +87,7 @@ const ContactSectionLight = () => {
                                 </div>
                                 <div className="flex items-center space-x-4 text-gray-900 font-bold  text-xl">
                                     <Mail className="w-6 h-6" />
-                                    <span>bitnextro@gmail.com</span>
+                                  <a href="mailto:info@bitnextro.com">  <span>info@bitnextro.com</span></a>
                                 </div>
                                 <div className="flex items-center space-x-4 text-gray-900 font-bold  text-xl">
                                     <MapPin className="w-6 h-6" />
