@@ -22,7 +22,7 @@ const ClientCard = ({ client }) => {
       className="group relative rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 overflow-hidden
                  bg-linear-to-br from-white/80 via-white/50 to-white/30 
                  backdrop-blur-xl border border-white/60 shadow-[0_8px_32px_0_rgba(31,38,135,0.05)]
-                 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:border-white/90"
+                 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:border-white/90 scrollanimate"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -100,7 +100,7 @@ export default function App() {
 
         {/* Grid Layout */}
         {/* <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 xl:grid-cols-4 gap-6"> */}
-        <div className='flex justify-center'>
+        <div className='flex justify-center '>
           {CLIENTS.map((client) => (
             <ClientCard key={client.id} client={client} />
           ))}
