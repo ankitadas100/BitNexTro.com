@@ -10,8 +10,7 @@ export default function AnimatedBackground() {
         width: window.innerWidth,
         height: window.innerHeight
       });
-    };
-    
+    }; 
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
@@ -38,7 +37,6 @@ export default function AnimatedBackground() {
         this.speedY = Math.random() * 0.5 - 0.25;
         this.opacity = Math.random() * 0.5 + 0.2;
       }
-
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
