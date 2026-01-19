@@ -3,7 +3,6 @@ import logo_final_p from "../assets/f_logo.png"
 import { Menu, X } from "lucide-react";
 import Head from "./Head";
 import { Link } from "react-router";
-
 const servicesData = [
   /* same servicesData as before - keep the array you already have */
   {
