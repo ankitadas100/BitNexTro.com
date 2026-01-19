@@ -98,9 +98,9 @@ export default function Footer() {
           {/* Bottom Bar */}
           <div className="pt-8 border-t border-white/10">
             <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-              <p className="text-gray-400 text-sm flex items-center gap-2">
+             <a href="https://www.linkedin.com/in/sekh-rijwan-026740311/" target='_blank'> <p className="text-gray-400 text-sm flex items-center gap-2">
                 Made with <span className="text-red-500">❤</span> by Rijwan
-              </p>
+              </p></a>
               <p className="text-gray-400 text-sm">
                 © 2025 BitNextro. All rights reserved.
               </p>
