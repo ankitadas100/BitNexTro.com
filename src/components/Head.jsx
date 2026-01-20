@@ -12,7 +12,7 @@ export default function Head() {
       </div>
       <div className='flex justify-between gap-4 items-center mr-4 text-white cursor-pointer  '>
         <Linkedin />
-        <X />
+       <a href="https://skrijwan.vercel.app" target='_blank'> <X /></a>
         <Facebook />
       </div>
 
