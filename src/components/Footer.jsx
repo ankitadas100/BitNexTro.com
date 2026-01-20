@@ -28,13 +28,13 @@ export default function Footer() {
                 With Zero compromise
               </p>
               <div className="flex gap-3">
-                <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                <a href="https://www.facebook.com/profile.php?id=61585936040133" target='_blank'className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
                   <span className="text-xl"><Facebook /></span>
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                <a href=" https://www.linkedin.com/in/bitnextro-solutions-private-limited-a3409a3a5" target='_blank'className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
                   <span className="text-xl"><Linkedin /></span>
                 </a>
-                <a href="#" className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
+                <a href="https://x.com/bitnextro" target='_blank' className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-all duration-300 hover:scale-110">
                   <span className="text-xl"><X /></span>
                 </a>
               </div>

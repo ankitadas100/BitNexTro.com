@@ -11,9 +11,9 @@ export default function Head() {
 
       </div>
       <div className='flex justify-between gap-4 items-center mr-4 text-white cursor-pointer  '>
-        <Linkedin />
-       <a href="https://skrijwan.vercel.app" target='_blank'> <X /></a>
-        <Facebook />
+        <a href=" https://www.linkedin.com/in/bitnextro-solutions-private-limited-a3409a3a5" target='_blank'><Linkedin /></a>
+       <a href="https://x.com/bitnextro" target='_blank'> <X /></a>
+        <a href="https://www.facebook.com/profile.php?id=61585936040133" target='_blank'><Facebook /></a>
       </div>
 
     </div>
