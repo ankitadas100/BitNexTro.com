@@ -247,6 +247,13 @@ export default function Navbar() {
               >
                 Support
               </a>
+              <Link
+                to="/login"
+                onClick={handlescroll}
+                className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
+              >
+                login
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -335,6 +342,13 @@ export default function Navbar() {
               >
                 Support
               </a>
+              <Link
+                to="/login"
+                onClick={handlescroll}
+                className="block px-4 py-2 text-gray-700 hover:text-blue-600"
+              >
+                Login
+              </Link>
             </div>
           )}
         </div>
