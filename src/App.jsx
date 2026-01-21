@@ -11,6 +11,7 @@ import Career from './pages/Career';
 import Footer from './components/Footer';
 import { Flip, ToastContainer } from 'react-toastify'
 import PdfUpload from './components/PdfUpload';
+import LoginComponent from './components/Login';
 import Contactpage from './pages/Contactpage';
 import Aboutpage from './pages/Aboutpage';
 import Privacypolicy from './pages/Privacypolicy';
@@ -25,7 +26,8 @@ function App() {
         <Route path='/' element={ <HomePage/>}/>
         <Route path='/career' element={ <Career/>}/>
         <Route path='/Pdf' element={ <PdfUpload/>}/>
-        <Route path='/contact' element={ <Contactpage/>}/>
+        <Route path='/login' element={ <LoginComponent/>}/>
+                <Route path='/contact' element={ <Contactpage/>}/>
         <Route path='/about' element={ <Aboutpage/>}/>
         <Route path='/privacy' element={ <Privacypolicy/>}/>
       </Routes>
