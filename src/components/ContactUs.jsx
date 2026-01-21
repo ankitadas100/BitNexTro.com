@@ -91,7 +91,9 @@ const ContactSectionLight = () => {
                                 </div>
                                 <div className="flex items-center space-x-4 text-gray-900 font-bold  text-xl">
                                     <MapPin className="w-6 h-6" />
-                                    <span>5, park lane kol 16, park street </span>
+                                    <span>5, Park lane,Park Street<br/> Kol - 700016,West Bengal,India</span>
+
+
                                 </div>
                             </div>
                         </div>
