@@ -1,218 +1,346 @@
-import React from 'react';
-import { Shield, Zap, Globe, Users, Target, Award } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Shield, Zap, Globe, Users, Target, Award, ArrowRight, CheckCircle2, Server, Lock } from 'lucide-react';
+import aboutpic from "../assets/about.jpeg"
+// --- Utility: Animated Counter ---
+const AnimatedCounter = ({ end, duration = 2000, suffix = "" }) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (countRef.current) observer.observe(countRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+    
+    // Parse the end number (handle string inputs like "500+")
+    const numericEnd = parseInt(end.toString().replace(/\D/g, '')) || 0;
+    
+    let start = 0;
+    const increment = numericEnd / (duration / 16);
+    
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= numericEnd) {
+        setCount(numericEnd);
+        clearInterval(timer);
+      } else {
+        setCount(Math.ceil(start));
+      }
+    }, 16);
+
+    return () => clearInterval(timer);
+  }, [end, duration, isVisible]);
+
+  return (
+    <span ref={countRef} className="tabular-nums">
+      {count}{suffix}
+    </span>
+  );
+};
+
+// --- Utility: Scroll Reveal Hook ---
+const useScrollReveal = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const domRef = useRef();
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => setIsVisible(entry.isIntersecting));
+    });
+    const currentElement = domRef.current;
+    if (currentElement) observer.observe(currentElement);
+    return () => {
+      if (currentElement) observer.unobserve(currentElement);
+    };
+  }, []);
+
+  return [domRef, isVisible];
+};
+
+const RevealSection = ({ children, className = "" }) => {
+  const [ref, isVisible] = useScrollReveal();
+  return (
+    <div
+      ref={ref}
+      className={`transition-all duration-1000 transform ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+      } ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
 
 export default function AboutPage() {
   const services = [
     {
-      icon: <Shield className="w-8 h-8" />,
-      title: "Cybersecurity",
-      description: "Advanced security solutions to protect your digital assets and ensure business continuity."
+      icon: <Lock className="w-8 h-8" />,
+      title: "Zero-Trust Security",
+      description: "Military-grade encryption and threat detection systems protecting your most critical digital assets."
     },
     {
-      icon: <Zap className="w-8 h-8" />,
-      title: "Scalable Infrastructure",
-      description: "Build robust, scalable systems that grow with your business needs."
+      icon: <Server className="w-8 h-8" />,
+      title: "Cloud Infrastructure",
+      description: "Scalable AWS/Azure architecture designed for 99.99% uptime and infinite growth potential."
     },
     {
       icon: <Globe className="w-8 h-8" />,
-      title: "Networking Solutions",
-      description: "Enterprise-grade networking infrastructure for seamless connectivity."
+      title: "Global Connectivity",
+      description: "Low-latency SD-WAN solutions connecting your distributed workforce seamlessly."
     },
     {
       icon: <Users className="w-8 h-8" />,
-      title: "Enterprise Support",
-      description: "24/7 dedicated support to keep your operations running smoothly."
+      title: "Dedicated Support",
+      description: "24/7/365 enterprise-level support teams monitoring your stack in real-time."
     }
   ];
 
   const stats = [
-    { number: "500+", label: "Projects Completed" },
-    { number: "98%", label: "Client Satisfaction" },
-    { number: "50+", label: "Enterprise Clients" },
-    { number: "24/7", label: "Support Available" }
+    { number: "1", suffix: "+", label: "Enterprise Deployments" },
+    { number: "98", suffix: "%", label: "Client Retention Rate" },
+    // { number: "50", suffix: "+", label: "Fortune 500 Partners" },
+    { number: "24", suffix: "/7", label: "Active Monitoring" }
   ];
 
   const values = [
     {
-      icon: <Target className="w-6 h-6" />,
-      title: "Innovation",
-      description: "Constantly pushing boundaries with cutting-edge technology solutions."
+      icon: <Zap className="w-6 h-6" />,
+      title: "Velocity",
+      description: "Rapid deployment methodologies that get you to market faster."
     },
     {
       icon: <Award className="w-6 h-6" />,
       title: "Excellence",
-      description: "Committed to delivering the highest quality in every project."
+      description: "ISO-certified quality standards in every line of code."
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: "Security First",
-      description: "Your data security and privacy are our top priorities."
+      title: "Integrity",
+      description: "Transparent protocols and complete data sovereignty."
     },
     {
-      icon: <Users className="w-6 h-6" />,
-      title: "Client-Centric",
-      description: "Building lasting partnerships through dedicated service."
+      icon: <Target className="w-6 h-6" />,
+      title: "Precision",
+      description: "Data-driven decision making for optimal system performance."
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-400 via-green-400 to-teal-300">
-      {/* Hero Section */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-transparent"></div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20">
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <div className="min-h-screen bg-slate-950 text-slate-200 overflow-hidden font-sans selection:bg-emerald-500/30">
+      
+      {/* --- Animated Background --- */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-900/20 blur-[120px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/20 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-slate-900/50 blur-[100px]"></div>
+        {/* Grid Overlay */}
+        <div className="absolute inset-0 bg-[url('https://grainy-linears.vercel.app/noise.svg')] opacity-5"></div>
+      </div>
+
+      {/* --- Hero Section --- */}
+      <section className="relative pt-20 pb-16 lg:pt-32 lg:pb-24 px-4 sm:px-6 lg:px-8 z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            
             {/* Left Content */}
-            <div className="space-y-6 lg:space-y-8 z-10">
-              <div className="inline-block">
-                <span className="bg-white/90 backdrop-blur-sm text-indigo-700 font-semibold px-6 py-2 rounded-full text-sm lg:text-base shadow-lg">
-                  About BitNextro
+            <div className="space-y-8 animate-fade-in-up">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-900/30 border border-emerald-500/30 text-emerald-400 text-sm font-medium">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                 </span>
+                Leading the Future of IT
               </div>
               
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                <span className="text-indigo-900">Building Smart</span>
-                <br />
-                <span className="text-indigo-700">Technology for Modern</span>
-                <br />
-                <span className="text-indigo-900">Businesses</span>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-white">
+                Building <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-teal-400">Intelligent</span> <br />
+                Infrastructure.
               </h1>
               
-              <div className="space-y-4 text-gray-800">
-                <p className="text-base sm:text-lg lg:text-xl font-medium leading-relaxed">
-                  <span className="font-bold text-indigo-900">BitNextro Solutions</span> is a next-generation IT company focused on 
-                  transforming ideas into powerful digital solutions. We design reliable software, scalable infrastructure, 
-                  and secure systems that simplify business operations and accelerate growth.
-                </p>
-                
-                <p className="text-base sm:text-lg leading-relaxed">
-                  Our mission is to deliver practical, end-to-end IT services — from networking and cybersecurity 
-                  to enterprise support — enabling organizations to thrive in an ever-evolving digital landscape.
+              <div className="space-y-6 text-slate-400 text-lg leading-relaxed max-w-xl">
+                <p>
+                  <strong className="text-white">BitNextro Solutions</strong> architects the digital backbone of modern enterprises. We transform complex challenges into streamlined, secure, and scalable technology ecosystems.
                 </p>
               </div>
               
-              <div className="flex flex-wrap gap-4">
-                <button className="bg-indigo-700 hover:bg-indigo-800 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
-                  Get Started
+              <div className="flex flex-wrap gap-4 pt-4">
+                <button className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-8 py-4 rounded-lg font-bold transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] transform hover:-translate-y-1 flex items-center gap-2">
+                  Launch Project <ArrowRight className="w-5 h-5" />
                 </button>
-                <button className="bg-white/90 backdrop-blur-sm hover:bg-white text-indigo-700 px-8 py-3 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                  Learn More
+                <button className="bg-slate-800/50 hover:bg-slate-800 text-white border border-slate-700 hover:border-slate-600 px-8 py-4 rounded-lg font-semibold transition-all duration-300 backdrop-blur-sm">
+                  Explore Capabilities
                 </button>
               </div>
             </div>
             
-            {/* Right Image */}
-            <div className="relative lg:h-[600px] h-[400px] rounded-2xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-indigo-900/90 via-blue-900/80 to-cyan-900/70">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="relative w-64 h-64 lg:w-80 lg:h-80">
-                    <div className="absolute inset-0 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-20 animate-pulse"></div>
-                    <div className="absolute inset-8 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-full opacity-30 animate-pulse" style={{animationDelay: '1s'}}></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <Shield className="w-32 h-32 lg:w-40 lg:h-40 text-cyan-300" />
+            {/* Right Image/Graphic */}
+            <div className="relative lg:h-[600px] h-[400px] w-full hidden md:block">
+               {/* Abstract Tech Visualization */}
+               <img src={aboutpic} alt="" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- Stats Section --- */}
+      <div className="relative z-10 border-y border-white/5 bg-slate-900/30 backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <RevealSection key={index} className="text-center group">
+                <div className="text-4xl lg:text-5xl font-bold text-white mb-2 font-mono group-hover:text-emerald-400 transition-colors duration-300">
+                  <AnimatedCounter end={stat.number} suffix={stat.suffix} />
+                </div>
+                <div className="text-sm text-slate-400 uppercase tracking-widest font-semibold">{stat.label}</div>
+              </RevealSection>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* --- Services Section --- */}
+      <section className="relative py-20 lg:py-32 z-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <RevealSection className="text-center mb-20">
+            <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6">Core Capabilities</h2>
+            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
+              We deploy end-to-end solutions that bridge the gap between current infrastructure and future innovation.
+            </p>
+          </RevealSection>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, index) => (
+              <RevealSection key={index}>
+                <div className="h-full bg-slate-900/50 backdrop-blur-md rounded-2xl p-8 border border-white/5 hover:border-emerald-500/50 transition-all duration-300 hover:-translate-y-2 group">
+                  <div className="w-14 h-14 bg-slate-800 rounded-xl flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 group-hover:text-emerald-400 transition-all duration-300 text-slate-300">
+                    {service.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors">{service.title}</h3>
+                  <p className="text-slate-400 leading-relaxed text-sm">
+                    {service.description}
+                  </p>
+                </div>
+              </RevealSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* --- Values Section --- */}
+      <section className="relative py-20 bg-slate-900/50 z-10">
+        <div className="absolute inset-0 bg-[url('https://grainy-linears.vercel.app/noise.svg')] opacity-5"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <RevealSection>
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+                Engineered for <span className="text-emerald-400">Excellence</span>.
+              </h2>
+              <p className="text-slate-400 text-lg mb-8 leading-relaxed">
+                Our methodology is rooted in the belief that technology should be an enabler, not a bottleneck. We adhere to strict principles of transparency, security, and velocity.
+              </p>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {values.map((value, index) => (
+                  <div key={index} className="flex gap-4">
+                    <div className="shrink-0 mt-1">
+                      <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400 border border-emerald-500/20">
+                        {value.icon}
+                      </div>
+                    </div>
+                    <div>
+                      <h3 className="text-white font-bold mb-1">{value.title}</h3>
+                      <p className="text-sm text-slate-500">{value.description}</p>
                     </div>
                   </div>
-                </div>
-                
-                {/* Floating elements */}
-                <div className="absolute top-20 right-20 w-16 h-16 bg-cyan-400/30 backdrop-blur-sm rounded-lg animate-bounce"></div>
-                <div className="absolute bottom-32 left-16 w-20 h-20 bg-blue-400/30 backdrop-blur-sm rounded-lg animate-bounce" style={{animationDelay: '0.5s'}}></div>
-                <div className="absolute top-40 left-32 w-12 h-12 bg-indigo-400/30 backdrop-blur-sm rounded-lg animate-bounce" style={{animationDelay: '1s'}}></div>
+                ))}
               </div>
-              
-              <div className="absolute bottom-8 right-8 bg-indigo-900/80 backdrop-blur-md text-white px-6 py-3 rounded-lg">
-                <p className="text-xl font-bold">BITNEXTRO SOLUTIONS PVT LTD</p>
-                <p className="text-sm text-cyan-300">IT SUPPORT & SERVICES</p>
+            </RevealSection>
+            
+            <RevealSection className="relative">
+              <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
+                 <div className="aspect-video bg-linear-to-br from-slate-800 to-slate-900 flex items-center justify-center relative group overflow-hidden">
+                    {/* Simulated Code Block */}
+                    <div className="absolute inset-0 p-8 font-mono text-xs text-slate-500 opacity-30">
+                       <div>import &#123; Future &#125; from '@bitnextro/core';</div>
+                       <br/>
+                       <div>class EnterpriseScale extends Infrastructure &#123;</div>
+                       <div className="pl-4">constructor() &#123;</div>
+                       <div className="pl-8">super();</div>
+                       <div className="pl-8">this.security = 'Zero-Trust';</div>
+                       <div className="pl-8">this.uptime = 99.99;</div>
+                       <div className="pl-4">&#125;</div>
+                       <br/>
+                       <div className="pl-4">async deploy() &#123;</div>
+                       <div className="pl-8">await this.optimize();</div>
+                       <div className="pl-8">return 'Success';</div>
+                       <div className="pl-4">&#125;</div>
+                       <div>&#125;</div>
+                    </div>
+                    
+                    <div className="relative z-10 text-center">
+                       <Award className="w-20 h-20 text-emerald-500 mx-auto mb-4 opacity-80" />
+                       <div className="text-2xl font-bold text-white">ISO 27001 Certified</div>
+                       <div className="text-slate-400">Global Standard Security</div>
+                    </div>
+                    
+                    {/* Shine Effect */}
+                    <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:animate-shine"></div>
+                 </div>
               </div>
-            </div>
+            </RevealSection>
           </div>
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-12 lg:py-16 bg-indigo-900/10 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow">
-                <div className="text-3xl lg:text-4xl font-bold text-indigo-700 mb-2">{stat.number}</div>
-                <div className="text-sm lg:text-base text-gray-700 font-medium">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="py-12 lg:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-indigo-900 mb-4">Our Core Services</h2>
-            <p className="text-lg text-gray-800 max-w-2xl mx-auto">
-              Comprehensive IT solutions tailored to meet your business needs
-            </p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 group">
-                <div className="text-indigo-700 mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-bold text-indigo-900 mb-3">{service.title}</h3>
-                <p className="text-gray-700">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-12 lg:py-20 bg-white/40 backdrop-blur-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-indigo-900 mb-4">Our Values</h2>
-            <p className="text-lg text-gray-800 max-w-2xl mx-auto">
-              The principles that guide everything we do
-            </p>
-          </div>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {values.map((value, index) => (
-              <div key={index} className="bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="bg-indigo-700 text-white w-12 h-12 rounded-lg flex items-center justify-center mb-4">
-                  {value.icon}
-                </div>
-                <h3 className="text-lg font-bold text-indigo-900 mb-2">{value.title}</h3>
-                <p className="text-gray-700 text-sm">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 lg:py-20">
+      {/* --- CTA Section --- */}
+      <section className="relative py-24 z-10">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-gradient-to-r from-indigo-700 to-indigo-900 rounded-2xl p-8 lg:p-12 shadow-2xl">
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
-              Ready to Transform Your Business?
-            </h2>
-            <p className="text-lg lg:text-xl text-cyan-100 mb-8">
-              Let's build something amazing together. Contact us today to get started.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-indigo-700 hover:bg-cyan-50 px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                Contact Us
-              </button>
-              <button className="bg-cyan-500 text-white hover:bg-cyan-600 px-8 py-4 rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl">
-                View Our Work
-              </button>
+          <RevealSection>
+            <div className="bg-linear-to-b from-emerald-900/40 to-slate-900/40 backdrop-blur-xl border border-emerald-500/20 rounded-3xl p-12 shadow-2xl relative overflow-hidden">
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2/3 h-1 bg-linear-to-r from-transparent via-emerald-500 to-transparent"></div>
+              
+              <h2 className="text-3xl lg:text-5xl font-bold text-white mb-6">
+                Ready to Scale?
+              </h2>
+              <p className="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
+                Join the industry leaders who trust BitNextro with their digital evolution.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="bg-white text-slate-950 px-10 py-4 rounded-lg font-bold hover:bg-emerald-50 transition-all duration-300 shadow-xl flex items-center justify-center gap-2">
+                  <Globe className="w-5 h-5" /> Start Transformation
+                </button>
+                <button className="bg-transparent text-white border border-white/20 px-10 py-4 rounded-lg font-bold hover:bg-white/10 transition-all duration-300">
+                  Schedule Consultation
+                </button>
+              </div>
             </div>
-          </div>
+          </RevealSection>
         </div>
       </section>
+
+      {/* --- Footer (Simple) --- */}
+      <footer className="border-t border-white/5 bg-slate-950 py-12 text-center text-slate-500 text-sm relative z-10">
+        <p>&copy; 2024 BitNextro Solutions Pvt Ltd. All rights reserved.</p>
+      </footer>
     </div>
   );
 }
+
+// Add this to your index.css or global CSS for the custom animation
+/*
+
+*/
