@@ -27,7 +27,7 @@ function App() {
         <Route path='/career' element={ <Career/>}/>
         <Route path='/Pdf' element={ <PdfUpload/>}/>
         <Route path='/login' element={ <LoginComponent/>}/>
-                <Route path='/contact' element={ <Contactpage/>}/>
+         <Route path='/contact' element={ <Contactpage/>}/>
         <Route path='/about' element={ <Aboutpage/>}/>
         <Route path='/privacy' element={ <Privacypolicy/>}/>
       </Routes>

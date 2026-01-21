@@ -120,6 +120,14 @@ export default function Navbar() {
     });
 
   }
+  const handlescrollmob = () => {
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+setIsMenuOpen(false);
+  }
   return (
     <div>
       <nav className="fixed w-full md:h-[155px] z-40 transition-all duration-300 bg-[#f3f3f1] shadow-lg">
@@ -212,11 +220,10 @@ export default function Navbar() {
               </div>
 
               <Link
-                to="/#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-                }}
+                to="/about"
+                onClick={
+                  handlescroll
+                }
                 className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
               >
                 About
@@ -230,18 +237,15 @@ export default function Navbar() {
                 Career
               </Link>
 
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                }}
+              <Link
+                to="/contact"
+                onClick={handlescroll}
                 className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
               >
                 Contact
-              </a>
+              </Link>
               <a
-                href="https://bitnextro.freshdesk.com/support/home"
+                href="https://support.bitnextro.com/"
                 target="_blank"
                 className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
               >
@@ -272,7 +276,7 @@ export default function Navbar() {
             <div className="md:hidden pb-4">
               <Link
                 to="/"
-                onClick={handlescroll}
+                onClick={handlescrollmob}
                 className="block px-4 py-2 text-gray-700 hover:text-blue-600"
               >
                 Home
@@ -305,38 +309,30 @@ export default function Navbar() {
                 )}
               </div>
 
-              <a
-                href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
-                  setIsMenuOpen(false);
-                }}
+              <Link
+                to="/about"
+                onClick={handlescrollmob}
                 className="block px-4 py-2 text-gray-700 hover:text-blue-600"
               >
                 About
-              </a>
+              </Link>
 
               <Link
                 to="/career"
-                onClick={handlescroll}
+                onClick={handlescrollmob}
                 className="block px-4 py-2 text-gray-700 hover:text-blue-600"
               >
                 Career
               </Link>
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                  setIsMenuOpen(false);
-                }}
+              <Link
+                to="/contact"
+                onClick={handlescrollmob}
                 className="block px-4 py-2 text-gray-700 hover:text-blue-600"
               >
                 Contact
-              </a>
+              </Link>
               <a
-                href="https://bitnextro.freshdesk.com/support/home"
+                href="https://support.bitnextro.com/"
                 target="_blank"
                 className="block px-4 py-2 text-gray-700 hover:text-blue-600"
               >
