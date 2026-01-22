@@ -81,9 +81,9 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <MessageSquare className="w-16 h-16 mx-auto mb-4 opacity-90" />
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">Get In Touch</h1>
@@ -226,7 +226,7 @@ export default function ContactPage() {
           <div className="space-y-8">
             {/* Map Placeholder */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="h-80 bg-gradient-to-br from-blue-100 to-blue-200 relative">
+              <div className="h-80 bg-linear-to-br from-blue-100 to-blue-200 relative">
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-16 h-16 text-blue-600 mx-auto mb-4" />
@@ -242,7 +242,7 @@ export default function ContactPage() {
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Why Contact Us?</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
                     <span className="text-blue-600 font-bold">1</span>
                   </div>
                   <div>
@@ -251,7 +251,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
                     <span className="text-blue-600 font-bold">2</span>
                   </div>
                   <div>
@@ -260,7 +260,7 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0 mt-1">
+                  <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center shrink-0 mt-1">
                     <span className="text-blue-600 font-bold">3</span>
                   </div>
                   <div>
