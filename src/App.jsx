@@ -15,6 +15,8 @@ import LoginComponent from './components/Login';
 import Contactpage from './pages/Contactpage';
 import Aboutpage from './pages/Aboutpage';
 import Privacypolicy from './pages/Privacypolicy';
+import Termspage from './pages/Termspage';
+import Servicepage from './Servicepage';
 function App() {
 
   return (
@@ -30,6 +32,8 @@ function App() {
          <Route path='/contact' element={ <Contactpage/>}/>
         <Route path='/about' element={ <Aboutpage/>}/>
         <Route path='/privacy' element={ <Privacypolicy/>}/>
+        <Route path='/terms' element={ <Termspage/>}/>
+        <Route path='/service' element={ <Servicepage/>}/>
       </Routes>
        <Footer/>
     </BrowserRouter>

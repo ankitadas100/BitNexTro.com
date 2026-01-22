@@ -57,20 +57,20 @@ export default function ContactPage() {
     {
       icon: <Mail className="w-6 h-6" />,
       title: 'Email Us',
-      detail: 'info@company.com',
-      subDetail: 'support@company.com'
+      detail: 'info@bitnextro.com',
+      subDetail: '24/7'
     },
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Call Us',
-      detail: '+1 (555) 123-4567',
+      detail: '+919330855877',
       subDetail: 'Mon-Fri 9am-6pm EST'
     },
     {
       icon: <MapPin className="w-6 h-6" />,
       title: 'Visit Us',
-      detail: '123 Business Street',
-      subDetail: 'New York, NY 10001'
+      detail: '5, Park lane,Park Street',
+      subDetail: 'Kol - 700016,West Bengal,India'
     },
     {
       icon: <Clock className="w-6 h-6" />,
