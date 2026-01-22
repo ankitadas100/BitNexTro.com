@@ -102,7 +102,7 @@ export default function Servicepage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-linear-to-br from-slate-950 via-slate-900 to-slate-950 py-16 px-4 sm:px-6 lg:px-8">
       {/* Header Section */}
       <div className="max-w-7xl mx-auto text-center mb-16">
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
@@ -122,13 +122,13 @@ export default function Servicepage() {
           >
             {/* Icon Container */}
             <div className={`${service.iconBg} rounded-xl p-4 w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
-              <div className={`bg-gradient-to-br ${service.gradient} rounded-lg p-2 text-white`}>
+              <div className={`bg-linear-to-br ${service.gradient} rounded-lg p-2 text-white`}>
                 {service.icon}
               </div>
             </div>
 
             {/* Title */}
-            <h3 className="text-xl font-semibold text-white mb-4 leading-tight min-h-[3.5rem]">
+            <h3 className="text-xl font-semibold text-white mb-4 leading-tight min-h-14">
               {service.title}
             </h3>
 
@@ -139,27 +139,27 @@ export default function Servicepage() {
                   key={idx}
                   className="flex items-center text-slate-400 hover:text-slate-300 transition-colors duration-200"
                 >
-                  <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${service.gradient} mr-2`}></div>
+                  <div className={`w-1.5 h-1.5 rounded-full bg-linear-to-r ${service.gradient} mr-2`}></div>
                   <span className="text-sm">{item}</span>
                 </div>
               ))}
             </div>
 
             {/* Hover Effect Overlay */}
-            <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
+            <div className={`absolute inset-0 rounded-2xl bg-linear-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-opacity duration-300 pointer-events-none`}></div>
           </div>
         ))}
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-4xl mx-auto mt-20 text-center bg-gradient-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-sm rounded-3xl p-8 sm:p-12 border border-slate-800">
+      <div className="max-w-4xl mx-auto mt-20 text-center bg-linear-to-br from-blue-900/30 to-purple-900/30 backdrop-blur-sm rounded-3xl p-8 sm:p-12 border border-slate-800">
         <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
           Ready to Transform Your Business?
         </h2>
         <p className="text-slate-400 mb-8 text-lg">
           Let's discuss how our services can help you achieve your goals
         </p>
-        <button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-105">
+        <button className="bg-linear-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/50 hover:scale-105">
           Get Started Today
         </button>
       </div>

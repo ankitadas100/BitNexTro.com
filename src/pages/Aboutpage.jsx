@@ -111,7 +111,7 @@ export default function AboutPage() {
   const stats = [
     { number: "1", suffix: "+", label: "Enterprise Deployments" },
     { number: "98", suffix: "%", label: "Client Retention Rate" },
-    // { number: "50", suffix: "+", label: "Fortune 500 Partners" },
+    { number: "0", suffix: "+", label: "Fortune 500 Partners" },
     { number: "24", suffix: "/7", label: "Active Monitoring" }
   ];
 
@@ -189,7 +189,7 @@ export default function AboutPage() {
             {/* Right Image/Graphic */}
             <div className="relative lg:h-[600px] h-[400px] w-full hidden md:block">
                {/* Abstract Tech Visualization */}
-               <img src={aboutpic} alt="" />
+               <img className='rounded-2xl' src={aboutpic} alt="" />
             </div>
           </div>
         </div>
@@ -273,7 +273,7 @@ export default function AboutPage() {
               <div className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl">
                  <div className="aspect-video bg-linear-to-br from-slate-800 to-slate-900 flex items-center justify-center relative group overflow-hidden">
                     {/* Simulated Code Block */}
-                    <div className="absolute inset-0 p-8 font-mono text-xs text-slate-500 opacity-30">
+                    <div className="absolute inset-0 p-8 font-mono text-xs text-slate-200 opacity-30">
                        <div>import &#123; Future &#125; from '@bitnextro/core';</div>
                        <br/>
                        <div>class EnterpriseScale extends Infrastructure &#123;</div>
@@ -290,11 +290,6 @@ export default function AboutPage() {
                        <div>&#125;</div>
                     </div>
                     
-                    <div className="relative z-10 text-center">
-                       <Award className="w-20 h-20 text-emerald-500 mx-auto mb-4 opacity-80" />
-                       <div className="text-2xl font-bold text-white">ISO 27001 Certified</div>
-                       <div className="text-slate-400">Global Standard Security</div>
-                    </div>
                     
                     {/* Shine Effect */}
                     <div className="absolute top-0 -left-full w-full h-full bg-linear-to-r from-transparent via-white/5 to-transparent skew-x-12 group-hover:animate-shine"></div>
@@ -331,16 +326,6 @@ export default function AboutPage() {
           </RevealSection>
         </div>
       </section>
-
-      {/* --- Footer (Simple) --- */}
-      <footer className="border-t border-white/5 bg-slate-950 py-12 text-center text-slate-500 text-sm relative z-10">
-        <p>&copy; 2024 BitNextro Solutions Pvt Ltd. All rights reserved.</p>
-      </footer>
     </div>
   );
 }
-
-// Add this to your index.css or global CSS for the custom animation
-/*
-
-*/
