@@ -46,9 +46,9 @@ export default function PrivacyPolicy() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <div className="bg-linear-to-r from-blue-600 to-blue-800 text-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
           <div className="flex items-center justify-center mb-6">
             <Shield className="w-12 h-12 sm:w-16 sm:h-16" />
@@ -79,7 +79,7 @@ export default function PrivacyPolicy() {
               className="bg-white rounded-lg shadow-sm border border-slate-200 p-6 sm:p-8 hover:shadow-md transition-shadow duration-300"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                <div className="shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
                   {section.icon}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -106,7 +106,7 @@ export default function PrivacyPolicy() {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-gradient-to-r from-slate-800 to-slate-900 text-white rounded-lg p-6 sm:p-8 mt-8">
+        <div className="bg-linear-to-r from-slate-800 to-slate-900 text-white rounded-lg p-6 sm:p-8 mt-8">
           <div className="flex items-center gap-3 mb-4">
             <Mail className="w-6 h-6" />
             <h3 className="text-xl sm:text-2xl font-semibold">
