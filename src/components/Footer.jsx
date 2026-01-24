@@ -1,7 +1,13 @@
 import React from 'react'
 import logo_final from "../assets/f_logo.jpg"
 import { Award, CloudUpload, Code, Facebook, Globe, Linkedin, Shield, Twitter, X } from 'lucide-react'
+import { Link } from 'react-router'
 export default function Footer() {
+  const lastitem=[
+    {name:"Privacy Policy",link:"privacy"},
+    {name:"Terms & Conditions",link:"terms"},
+    {name:"Refund Policy",link:""},
+  ]
     const handleclick = (e,link) => {
     e.preventDefault();
     const llink=link.toLocaleLowerCase()// Prevent default anchor jump
@@ -12,6 +18,14 @@ export default function Footer() {
         block: 'start'
       });
     }
+  }
+    const handlescroll = () => {
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+
   }
   return (
     <footer className="relative z-10 bg-linear-to-br from-sky-900 via-sky-800 to-sky-900 text-white py-16 px-8">
@@ -105,10 +119,10 @@ export default function Footer() {
                 © 2025 BitNextro. All rights reserved.
               </p>
               <div className="flex gap-6 text-sm">
-                {['Privacy Policy', 'Terms & Conditions', 'Refund Policy'].map((item) => (
-                  <a key={item} href="#" className="text-gray-400 hover:text-white transition-colors duration-300">
-                    {item}
-                  </a>
+                {lastitem.map((item,index) => (
+                  <Link onClick={handlescroll} to={`/${item.link}`} key={index}  className="text-gray-400 hover:text-white transition-colors duration-300">
+                    {item.name}
+                  </Link>
                 ))}
               </div>
             </div>
