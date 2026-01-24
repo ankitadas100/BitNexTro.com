@@ -81,9 +81,9 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 to-slate-100 margin-top:49px">
       {/* Hero Section */}
-      <div className="bg-linear-to-r from-blue-600 to-blue-800 text-white py-16 px-4 sm:px-6 lg:px-8">
+      <div className="bg-[#19203a]  text-white py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
           <MessageSquare className="w-16 h-16 mx-auto mb-4 opacity-90" />
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4">Get In Touch</h1>
@@ -226,15 +226,18 @@ export default function ContactPage() {
           <div className="space-y-8">
             {/* Map Placeholder */}
             <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="h-80 bg-linear-to-br from-blue-100 to-blue-200 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-                    <p className="text-gray-700 font-medium">Interactive Map</p>
-                    <p className="text-gray-500 text-sm">123 Business Street, New York, NY</p>
-                  </div>
-                </div>
-              </div>
+              
+              <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.7315872269473!2d88.35407490957795!3d22.551725379421114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa1b53dab08d9575%3A0x8d2860d0a734ab9f!2sBITNEXTRO%20SOLUTIONS%20PRIVATE%20LIMITED!5e0!3m2!1sen!2sin!4v1769054188624!5m2!1sen!2sin"
+                                height="200"
+                                width="100%"
+                                style={{ border: 0 }}
+                                allowFullScreen=""
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                                title="Company Location"
+                                className="grayscale hover:grayscale-0 transition-all duration-300"
+                            ></iframe>
             </div>
 
             {/* FAQ or Additional Info */}
