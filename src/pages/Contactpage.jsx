@@ -310,18 +310,14 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Map and Additional Info */}
-          <div className="space-y-8">
-            {/* Map Placeholder */}
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="h-80 bg-linear-to-br from-blue-100 to-blue-200 relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-16 h-16 text-blue-600 mx-auto mb-4" />
-                    <p className="text-gray-700 font-medium">Interactive Map</p>
-                    <p className="text-gray-500 text-sm">123 Business Street, New York, NY</p>
-                  </div>
-                </div>
+          {/* Right Column: Map & Value Props */}
+          <div className="lg:col-span-5 space-y-8">
+
+            {/* Stylized Map Placeholder */}
+            <div className="bg-slate-900/50 backdrop-blur-md rounded-3xl overflow-hidden border border-white/5 shadow-xl group">
+              <div className="h-64 relative bg-slate-800">
+                {/* Abstract Map UI */}
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3334.4900536014266!2d88.35408027475646!3d22.55173033373591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa1b53dab08d9575%3A0x8d2860d0a734ab9f!2sBITNEXTRO%20SOLUTIONS%20PRIVATE%20LIMITED!5e1!3m2!1sen!2sin!4v1769104804015!5m2!1sen!2sin" width="600" height="450"></iframe>
               </div>
             </div>
 
