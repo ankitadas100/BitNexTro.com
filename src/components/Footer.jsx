@@ -6,7 +6,7 @@ export default function Footer() {
   const lastitem=[
     {name:"Privacy Policy",link:"privacy"},
     {name:"Terms & Conditions",link:"terms"},
-    {name:"Refund Policy",link:""},
+    {name:"Refund Policy",link:"refund"},
   ]
     const handleclick = (e,link) => {
     e.preventDefault();

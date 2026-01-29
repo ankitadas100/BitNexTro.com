@@ -17,6 +17,7 @@ import Aboutpage from './pages/Aboutpage';
 import Privacypolicy from './pages/Privacypolicy';
 import Termspage from './pages/Termspage';
 import Servicepage from './Servicepage';
+import Refund from './pages/refund';
 function App() {
 
   return (
@@ -34,6 +35,8 @@ function App() {
         <Route path='/privacy' element={ <Privacypolicy/>}/>
         <Route path='/terms' element={ <Termspage/>}/>
         <Route path='/service' element={ <Servicepage/>}/>
+        <Route path='/refund' element={ <Refund/>}/>
+        
       </Routes>
        <Footer/>
     </BrowserRouter>
