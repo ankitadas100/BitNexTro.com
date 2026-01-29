@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import logo_final_p from "../assets/f_logo.png"
 import { Menu, X } from "lucide-react";
 import Head from "./Head";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 const servicesData = [
   /* same servicesData as before - keep the array you already have */
   {
@@ -104,7 +104,7 @@ export default function Navbar() {
   const [activeCategory, setActiveCategory] = useState(servicesData[0].id);
   const megaTimeout = useRef(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-
+  const location = useLocation()
   const openMega = () => {
     if (megaTimeout.current) clearTimeout(megaTimeout.current);
     setIsMegaOpen(true);
@@ -143,7 +143,7 @@ setIsMenuOpen(false);
               <Link
                 to="/"
                 onClick={handlescroll}
-                className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
+                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/"? "bg-green-500  rounded-2xl text-white":""}`}
               >
                 Home
               </Link>
@@ -224,7 +224,7 @@ setIsMenuOpen(false);
                 onClick={
                   handlescroll
                 }
-                className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
+                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/about"? "bg-green-500  rounded-2xl text-white":""}`}
               >
                 About
               </Link>
@@ -232,7 +232,7 @@ setIsMenuOpen(false);
               <Link
                 to="/career"
                 onClick={handlescroll}
-                className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
+                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/career"? "bg-green-500  rounded-2xl text-white":""}`}
               >
                 Career
               </Link>
@@ -240,7 +240,7 @@ setIsMenuOpen(false);
               <Link
                 to="/contact"
                 onClick={handlescroll}
-                className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
+                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/contact"? "bg-green-500  rounded-2xl text-white":""}`}
               >
                 Contact
               </Link>
@@ -277,7 +277,7 @@ setIsMenuOpen(false);
               <Link
                 to="/"
                 onClick={handlescrollmob}
-                className="block px-4 py-2 text-gray-700 hover:text-blue-600"
+                className={`block px-4 py-2 text-gray-700 hover:text-blue-600 ${location.pathname=="/"?"text-green-500":""}`}
               >
                 Home
               </Link>
@@ -312,7 +312,7 @@ setIsMenuOpen(false);
               <Link
                 to="/about"
                 onClick={handlescrollmob}
-                className="block px-4 py-2 text-gray-700 hover:text-blue-600"
+                className={`block px-4 py-2 text-gray-700 hover:text-blue-600 ${location.pathname=="/about"?"text-green-500":""}`}
               >
                 About
               </Link>
@@ -320,14 +320,14 @@ setIsMenuOpen(false);
               <Link
                 to="/career"
                 onClick={handlescrollmob}
-                className="block px-4 py-2 text-gray-700 hover:text-blue-600"
+                className={`block px-4 py-2 text-gray-700 hover:text-blue-600 ${location.pathname=="/career"?"text-green-500":""}`}
               >
                 Career
               </Link>
               <Link
                 to="/contact"
                 onClick={handlescrollmob}
-                className="block px-4 py-2 text-gray-700 hover:text-blue-600"
+                className={`block px-4 py-2 text-gray-700 hover:text-blue-600 ${location.pathname=="/contact"?"text-green-500":""}`}
               >
                 Contact
               </Link>

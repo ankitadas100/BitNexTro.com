@@ -154,7 +154,7 @@ export default function ContactPage() {
       </div>
 
       {/* --- Header Section --- */}
-      <div className="relative z-10 pt-20 pb-20 lg:pt-32 lg:pb-24 px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 pt-20 pb-20 lg:pt-32 lg:pb-24 px-4 sm:px-6 lg:px-8 mt-2.5">
         <div className="max-w-4xl mx-auto text-center animate-fade-in-up">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
             <span className="relative flex h-2 w-2">
