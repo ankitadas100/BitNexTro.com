@@ -31,9 +31,9 @@ export default function Refund() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100">
+    <div className="min-h-screen bg-linear-to-br from-slate-50 via-blue-50 to-slate-100">
       {/* Header Section */}
-      <div className="bg-gradient-to-r from-slate-800 via-slate-700 to-blue-900 text-white py-20 px-6">
+      <div className="bg-linear-to-r from-slate-800 via-slate-700 to-blue-900 text-white py-20 px-6 mt-3">
         <div className="max-w-5xl mx-auto">
           <div className="flex items-center justify-center mb-6">
             <div className="bg-white/10 backdrop-blur-sm p-4 rounded-2xl">
@@ -75,7 +75,7 @@ export default function Refund() {
               className="bg-white rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border border-slate-200"
             >
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 bg-gradient-to-br from-blue-500 to-slate-700 text-white p-3 rounded-lg">
+                <div className="shrink-0 bg-linear-to-br from-blue-500 to-slate-700 text-white p-3 rounded-lg">
                   {policy.icon}
                 </div>
                 <div className="flex-1">
@@ -92,9 +92,9 @@ export default function Refund() {
         </div>
 
         {/* Important Notice */}
-        <div className="bg-gradient-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 rounded-xl p-6 mb-12">
+        <div className="bg-linear-to-r from-amber-50 to-orange-50 border-l-4 border-amber-500 rounded-xl p-6 mb-12">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-6 h-6 text-amber-600 flex-shrink-0 mt-1" />
+            <AlertCircle className="w-6 h-6 text-amber-600 shrink-0 mt-1" />
             <div>
               <h3 className="text-lg font-semibold text-amber-900 mb-2">Important Notice</h3>
               <p className="text-amber-800 leading-relaxed">
@@ -106,7 +106,7 @@ export default function Refund() {
         </div>
 
         {/* Contact Section */}
-        <div className="bg-gradient-to-br from-slate-800 to-blue-900 text-white rounded-2xl shadow-xl p-8 md:p-10">
+        <div className="bg-linear-to-br from-slate-800 to-blue-900 text-white rounded-2xl shadow-xl p-8 md:p-10">
           <div className="text-center mb-8">
             <div className="inline-block bg-white/10 backdrop-blur-sm p-4 rounded-2xl mb-4">
               <Mail className="w-10 h-10 text-blue-200 mx-auto" />
