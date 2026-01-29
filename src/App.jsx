@@ -17,7 +17,7 @@ import Aboutpage from './pages/Aboutpage';
 import Privacypolicy from './pages/Privacypolicy';
 import Termspage from './pages/Termspage';
 import Servicepage from './Servicepage';
-import Refund from './pages/refund';
+import Refund from './pages/Refund';
 function App() {
 
   return (
