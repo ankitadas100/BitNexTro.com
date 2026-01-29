@@ -49,7 +49,7 @@ export default function TermsPage() {
       id: 5,
       icon: FileText,
       title: "Payment Terms",
-      content: "Payments for services must be made as per the agreed terms. Delayed payments may result in service suspension.",
+      content: "Payments for services must be made as per the agreed terms. Delayed payments may result in service suspension and penalty as well.",
       color: "red"
     },
     {
@@ -283,8 +283,8 @@ export default function TermsPage() {
               </h2>
               
               <p className="text-base sm:text-lg text-blue-100 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed">
-                If you have any questions or concerns regarding these Terms and Conditions, 
-                our legal team is here to help. We're committed to transparency and clarity.
+                If you have any questions regarding these Terms and Conditions, please contact Bitnextro Solutions Pvt Ltd. 
+                Our legal team is here to help and we're committed to transparency and clarity.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
