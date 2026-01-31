@@ -4,18 +4,45 @@ import { handleError, handleSuccess } from './ErrorMessage';
 const ContactSectionLight = () => {
     const form = useRef(null);
     const [loder,setloder]=useState(false)
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbyTMstU-QSoR-copgHz3ipUrfsKz00o6VJU_dQV0RI7tjbLimY71GIKPazrLZZuIay3/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxKzclS1ZW4SIbQ5WvTwOxrPIQpjSts1Av8w_mG4PxeWxlT2U_Jhlb7AdvuffPwZWXP/exec';
+
     const onsubmit = (e) => {
         e.preventDefault();
-        setloder(true)
-        fetch(scriptURL, { method: 'POST', body: new FormData(form.current) })
-            .then((response) => {
-                handleSuccess("Message sent successfully! we contact you soon.")
-                form.current.reset();
-                setloder(false)
-            })
-            .catch((error) => {console.error('Error!', error.message); handleError("Some error is occurred")});
+        setloder(true);
+
+        // 1. Create FormData from the form element
+        const data = new FormData(form.current);
+
+        // 2. Send the request
+        fetch(scriptURL, {
+            method: 'POST',
+            body: data
+        })
+        .then((response) => {
+            // Google Scripts returns a 200 OK even if script fails internally, 
+            // so we rely on the fetch completing successfully.
+            handleSuccess("Message sent successfully! We will contact you soon.");
+            form.current.reset();
+            setloder(false);
+        })
+        .catch((error) => {
+            console.error('Error!', error.message);
+            handleError("Some error occurred");
+            setloder(false); // Make sure to turn off loader on error too
+        });
     };
+    // const scriptURL = ';
+    // const onsubmit = (e) => {
+    //     e.preventDefault();
+    //     setloder(true)
+    //     fetch(scriptURL, { method: 'POST', body: new FormData(form.current) })
+    //         .then((response) => {
+    //             handleSuccess("Message sent successfully! we contact you soon.")
+    //             form.current.reset();
+    //             setloder(false)
+    //         })
+    //         .catch((error) => {console.error('Error!', error.message); handleError("Some error is occurred")});
+    // };
     return (
         <div className="w-full min-h-screen  flex items-center justify-center bg-sky-400 py-20 px-4">
             <div className="max-w-5xl w-full mx-auto">
