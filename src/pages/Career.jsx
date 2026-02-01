@@ -64,7 +64,7 @@ export default function Career() {
           
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-8">
             Build the Future at <br />
-            <span className="bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-teal-400">
               BitNextro Solutions
             </span>
           </h1>

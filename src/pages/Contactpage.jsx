@@ -166,7 +166,7 @@ export default function ContactPage() {
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
             Let's Engineer <br />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 via-indigo-400 to-purple-400">
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-teal-400">
               Your Vision.
             </span>
           </h1>

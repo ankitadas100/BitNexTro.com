@@ -278,7 +278,7 @@ const ServicesSection = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
           >
-            Future-Proof <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-purple-400">Solutions</span> <br />
+            Future-Proof <span className="text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-teal-400">Solutions</span> <br />
             For Modern Enterprises.
           </motion.h2>
 
