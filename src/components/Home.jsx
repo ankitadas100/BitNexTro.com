@@ -8,6 +8,7 @@ import ServicesSection from './Allservice';
 import ContactSection from './ContactUs';
 import WhatsAppContact from './Wpmessage';
 import App from './ClientHandle';
+import WhyChooseUs from './Why';
 const HomePage = () => {
 
   const [scrolled, setScrolled] = useState(false);
@@ -86,7 +87,7 @@ const HomePage = () => {
     'Commitment to long term growth'
   ];
   return (
-    <div className=" text-gray-900 font-sans overflow-x-hidden">
+    <div className="min-h-screen bg-slate-950 text-slate-200 font-sans selection:bg-blue-500/30 overflow-hidden relative">
 
       {/* Animated Background */}
       <div className="fixed inset-0 -z-10 overflow-hidden bg-white">
@@ -97,17 +98,9 @@ const HomePage = () => {
         </div>
 
         {/* Floating Blobs */}
-        <div className="absolute top-0 -left-4 w-96 h-96 bg-blue-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-96 h-96 bg-purple-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-20 w-96 h-96 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-indigo-300 rounded-full mix-blend-multiply filter blur-3xl opacity-15 animate-blob animation-delay-3000"></div>
-
-        {/* Animated Particles */}
-        <div className="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-particle"></div>
-        <div className="absolute top-40 right-20 w-3 h-3 bg-purple-400 rounded-full animate-particle animation-delay-1000"></div>
-        <div className="absolute top-60 left-1/3 w-2 h-2 bg-pink-400 rounded-full animate-particle animation-delay-2000"></div>
-        <div className="absolute bottom-40 right-1/4 w-3 h-3 bg-indigo-400 rounded-full animate-particle animation-delay-3000"></div>
-        <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-blue-300 rounded-full animate-particle animation-delay-4000"></div>
+ <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-green-700/50 blur-[130px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-slate-900/50 blur-[100px]"></div>
 
         {/* Animated Lines */}
         <svg className="absolute inset-0 w-full h-full opacity-10">
@@ -226,7 +219,7 @@ const HomePage = () => {
         <ServicesSection />
       </section>
       {/* Why Choose Us */}
-      <section id="why" data-animate className={`py-20 px-4 bg-green-500 transition-all duration-1000 ${visibleSections.has('why') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-40'}`}>
+      {/* <section id="why" data-animate className={`py-20 px-4 bg-green-500 transition-all duration-1000 ${visibleSections.has('why') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-40'}`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 md:gap-12 items-center">
             <div className="relative order-2 md:order-1">
@@ -253,6 +246,9 @@ const HomePage = () => {
             </div>
           </div>
         </div>
+      </section> */}
+      <section id='why'>
+        <WhyChooseUs/>
       </section>
 <App/>
 

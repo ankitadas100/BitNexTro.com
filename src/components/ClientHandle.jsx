@@ -62,21 +62,18 @@ const ClientCard = ({ client }) => {
 
 export default function App() {
   return (
-    <div className="relative min-h-screen bg-slate-50 font-sans text-slate-900 overflow-hidden">
+    <div className="relative min-h-screen bg-transparent font-sans text-slate-900 overflow-hidden">
 
 
-      <div className="absolute inset-0 w-full h-full bg-slate-400 z-0">
+      <div className="absolute inset-0 w-full h-full bg-transparent z-0">
         {/* Large flowing blobs */}
-        <div className="absolute top-0 -left-4 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-        <div className="absolute top-0 -right-4 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div className="absolute -bottom-8 left-60 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-green-700/50 blur-[130px] animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900 blur-[120px] animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-[40%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 w-[60%] h-[60%] rounded-full bg-slate-900/50 blur-[100px]"></div>
 
         {/* Additional decorative floating elements */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-7xl">
-          <div className="absolute top-1/4 right-10 w-32 h-32 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
-          <div className="absolute bottom-1/6 left-32 w-48 h-48 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-1/4 right-40 w-48 h-48 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
-          <div className="absolute bottom-1/12 right-0 w-48 h-48 bg-teal-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
+     
         </div>
       </div>
 
@@ -89,10 +86,10 @@ export default function App() {
             <Briefcase className="w-4 h-4" />
             <span>Portfolio Highlights</span>
           </div> */}
-          <h2 className="text-3xl md:text-5xl  font-extrabold tracking-tight text-blue-900 mb-6">
+          <h2 className="text-3xl md:text-5xl  font-extrabold tracking-tight text-transparent bg-clip-text bg-linear-to-r from-emerald-400 to-teal-400 mb-6">
             Trusted by industry leaders.
           </h2>
-          <p className="text-lg text-black leading-8">
+          <p className="text-lg text-green-500 leading-8">
             we partner with forward-thinking companies to build scalable solutions.
             From early-stage startups to established enterprises.
           </p>
