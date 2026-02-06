@@ -44,7 +44,7 @@ const ContactSectionLight = () => {
     //         .catch((error) => {console.error('Error!', error.message); handleError("Some error is occurred")});
     // };
     return (
-        <div className="w-full min-h-screen  flex items-center justify-center bg-sky-400 py-20 px-4">
+        <div className="w-full min-h-screen  flex items-center justify-center bg-slate-950 py-20 px-4">
             <div className="max-w-5xl w-full mx-auto">
 
                 <div className="grid lg:grid-cols-2 gap-0 lg:gap-12 bg-white rounded-4xl shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden" style={{ borderBottomRightRadius: "164px", borderTopLeftRadius: "100px" }}>
@@ -98,7 +98,7 @@ const ContactSectionLight = () => {
                             </div>
                         </form>
                     </div>
-                    <div className="bg-linear-to-br from-[#05c45e] to-[#137644] p-10 md:p-12 flex flex-col justify-between relative overflow-hidden">
+                    <div className="bg-linear-to-br from-emerald-400 to-teal-400 p-10 md:p-12 flex flex-col justify-between relative overflow-hidden">
                         {/* Background Shapes */}
                         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-80 h-80 rounded-full bg-white/10 blur-3xl"></div>
                         <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-purple-500/20 blur-3xl"></div>

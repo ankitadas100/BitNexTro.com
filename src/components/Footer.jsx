@@ -28,7 +28,7 @@ export default function Footer() {
 
   }
   return (
-    <footer className="relative z-10 bg-linear-to-br from-sky-900 via-sky-800 to-sky-900 text-white py-16 px-8">
+    <footer className="relative z-10 bg-linear-to-br from-blue-900 via-blue-800 to-blue-900 text-white py-16 px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             {/* Brand Section */}

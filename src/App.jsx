@@ -18,6 +18,7 @@ import Privacypolicy from './pages/Privacypolicy';
 import Termspage from './pages/Termspage';
 import Servicepage from './Servicepage';
 import Refund from './pages/Refund';
+import Background from './pages/Background';
 function App() {
 
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/terms' element={ <Termspage/>}/>
         <Route path='/service' element={ <Servicepage/>}/>
         <Route path='/refund' element={ <Refund/>}/>
+        <Route path='/b' element={ <Background/>}/>
         
       </Routes>
        <Footer/>
