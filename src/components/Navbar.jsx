@@ -143,7 +143,7 @@ setIsMenuOpen(false);
               <Link
                 to="/"
                 onClick={handlescroll}
-                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/"? "bg-green-500  rounded-2xl text-white":""}`}
+                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/"? "bg-teal-500  rounded-2xl text-white":""}`}
               >
                 Home
               </Link>
@@ -224,7 +224,7 @@ setIsMenuOpen(false);
                 onClick={
                   handlescroll
                 }
-                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/about"? "bg-green-500  rounded-2xl text-white":""}`}
+                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/about"? "bg-teal-500  rounded-2xl text-white":""}`}
               >
                 About
               </Link>
@@ -232,7 +232,7 @@ setIsMenuOpen(false);
               <Link
                 to="/career"
                 onClick={handlescroll}
-                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/career"? "bg-green-500  rounded-2xl text-white":""}`}
+                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/career"? "bg-teal-500  rounded-2xl text-white":""}`}
               >
                 Career
               </Link>
@@ -240,24 +240,24 @@ setIsMenuOpen(false);
               <Link
                 to="/contact"
                 onClick={handlescroll}
-                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/contact"? "bg-green-500  rounded-2xl text-white":""}`}
+                className={`text-gray-700 text-xl p-2  font-[play] hover:text-[#168acc] font-medium ${location.pathname=="/contact"? "bg-teal-500  rounded-2xl text-white":""}`}
               >
                 Contact
               </Link>
               <a
                 href="https://support.bitnextro.com/"
                 target="_blank"
-                className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
+                className="text-gray-700 text-xl font-[play] hover:text-[#bdd6e5] font-medium"
               >
                 Support
               </a>
-              <Link
+              {/* <Link
                 to="/login"
                 onClick={handlescroll}
                 className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
               >
                 login
-              </Link>
+              </Link> */}
             </div>
 
             {/* Mobile Menu Button */}
