@@ -247,7 +247,7 @@ setIsMenuOpen(false);
               <a
                 href="https://support.bitnextro.com/"
                 target="_blank"
-                className="text-gray-700 text-xl font-[play] hover:text-[#bdd6e5] font-medium"
+                className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
               >
                 Support
               </a>
@@ -270,6 +270,9 @@ setIsMenuOpen(false);
               </button>
             </div>
           </div>
+
+
+
 
           {/* Mobile Menu */}
           {isMenuOpen && (
