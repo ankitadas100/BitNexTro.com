@@ -1,102 +1,161 @@
 import React, { useState, useRef } from "react";
 import logo_final_p from "../assets/f_logo.png"
-import { Menu, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import Head from "./Head";
 import { Link, useLocation } from "react-router";
 const servicesData = [
-  /* same servicesData as before - keep the array you already have */
   {
-    id: "software",
-    title: "Software Development & Programming",
+    id: "hardware",
+    title: "Hardware Support",
     items: [
-      "Custom Software (ERP, CRM, CMS, inventory systems)",
-      "Web & Mobile Apps — front-end and back-end development",
-      "API and Integrations — payment gateways, microservices",
-      "DevOps & Automation — CI/CD, Docker/Kubernetes",
-      "Maintenance & Testing — ongoing support and QA",
+      "On-Site Hardware Repair",
+      "Server & Workstation Setup",
+      "Network Device Management",
+      "Hardware Procurement",
+      "Preventive Maintenance",
+      "Peripheral Support",
     ],
   },
+{
+  id: "network",
+  title: "Network Services",
+  items: [
+    "LAN & WAN Setup and Configuration",
+    "Router & Switch Installation",
+    "Firewall Configuration & Security",
+    "Server Installation & Management",
+    "On-Site Hardware Troubleshooting",
+    "Network Monitoring & Optimization",
+    "Wi-Fi Setup & Access Point Configuration",
+    "VPN Setup & Remote Access Solutions",
+    "Network Device Management",
+    "Preventive Maintenance & System Upgrades"
+  ]
+},
+{
+  id: "amc",
+  title: "Annual Maintenance Contract (AMC)",
+  items: [
+    "24/7 Technical Support",
+    "Scheduled Preventive Maintenance",
+    "Security & Performance Monitoring",
+    "Regular Data Backup",
+    "Bug Fixing & Feature Updates",
+    "Priority Issue Resolution",
+  ],
+},
+
   {
-    id: "networking",
-    title: "Networking & Connectivity",
+    id: "backup",
+    title: "Data Backup & Recovery",
     items: [
-      "Network Setup — LAN/WAN, wired & Wi-Fi, VPN tunnels",
-      "Managed Networking — monitoring, performance tuning",
-      "VoIP & Collaboration — telephony and video conferencing",
-      "Network Security — firewalls, IDS/IPS, VLAN segmentation",
+      "Automated Cloud Backup",
+      "Disaster Recovery Planning",
+      "On-Premise Backup Solutions",
+      "Data Restoration Services",
+      "Backup Monitoring & Alerts",
+      "Compliance-Ready Archiving",
     ],
   },
   {
     id: "cloud",
-    title: "Cloud Computing & Virtualization",
+    title: "Cloud Services",
     items: [
-      "Cloud Migration & Management — AWS/Azure/GCP",
-      "Infrastructure as a Service (IaaS)",
-      "Platform as a Service (PaaS)",
-      "SaaS Integration — Office365, Google Workspace",
-      "Virtualization — Hyper-V, VMware, container orchestration",
+      "Cloud Migration",
+      "Microsoft 365 (O365)",
+      "Azure & AWS Management",
+      "Cloud Storage Solutions",
+      "Virtual Desktop (VDI)",
+      "SaaS Application Support",
     ],
   },
   {
-    id: "storage",
-    title: "Data Storage, Backup & Analytics",
+    id: "managed",
+    title: "Managed Services",
     items: [
-      "Storage Solutions — SAN/NAS, cloud buckets, deduplication",
-      "Database Administration — MySQL, PostgreSQL, NoSQL",
-      "Data Backup & Disaster Recovery — onsite/offsite, cloud DR",
-      "Data Analytics & Mining — data pipelines, BI dashboards",
+      "Managed IT Support",
+      "Network Monitoring & Management",
+      "Patch Management",
+      "Helpdesk Services",
+      "Asset & License Management",
+      "IT Consulting & Strategy",
     ],
   },
   {
     id: "security",
-    title: "Cybersecurity & Compliance",
+    title: "Cybersecurity",
     items: [
-      "Risk Assessment — identify vulnerabilities & gaps",
-      "Threat Protection — firewalls, EDR, antimalware",
-      "Encryption & Access Control — VPNs, SSL/TLS, disk encryption",
-      "Data Loss Prevention (DLP) — policies & tools",
-      "Security Monitoring — SIEM & incident response",
-      "Identity Management — AD/LDAP, SSO, MFA",
-      "Compliance Support — GDPR, HIPAA, PCI-DSS",
-      "Disaster Recovery (DR) — cloud-based DR strategies",
+      "Threat Detection & Response",
+      "Security Audits & Assessments",
+      "Penetration Testing",
+      "Endpoint Protection",
+      "Email Security & Anti-Phishing",
+      "Compliance Management",
     ],
   },
   {
-    id: "digital",
-    title: "Digital & Marketing Services",
+    id: "remote",
+    title: "24/7 Remote Support",
     items: [
-      "Web Design & Development — UI/UX, front/back-end",
-      "Graphic & Multimedia Design — logos, branding, video",
-      "Search Engine Optimization (SEO)",
-      "Social Media Management — Facebook, LinkedIn, Instagram",
-      "Email Marketing — campaigns, automations, newsletters",
-      "Digital Advertising — PPC (Google Ads, social ads)",
+      "24/7 Helpdesk",
+      "Remote Desktop Support",
+      "Critical Incident Response",
+      "Proactive System Monitoring",
+      "Software Troubleshooting",
+      "Dedicated Account Manager",
     ],
   },
   {
-    id: "emerging",
-    title: "Emerging Technology & Innovation",
+    id: "webdev",
+    title: "Website & App Development",
     items: [
-      "Artificial Intelligence & Machine Learning",
-      "Blockchain & Cryptocurrency — smart contracts, wallets",
-      "Internet of Things (IoT) — sensors, cloud/edge",
-      "AR/VR & 3D Visualization",
-      "Robotic Process Automation (RPA)",
+      "Custom Website Design",
+      "Web Application Development",
+      "Mobile App Development",
+      "E-Commerce Solutions",
+      "CMS Integration",
+      "UI/UX Design",
     ],
   },
   {
-    id: "enterprise",
-    title: "Enterprise Solutions & Consulting",
+  id: "artificial",
+  title: "Artificial Intelligence",
+  items: [
+    "Machine Learning Solutions",
+    "Natural Language Processing (NLP)",
+    "Computer Vision Applications",
+    "AI Chatbot Development",
+    "Predictive Analytics",
+    "AI Model Training & Deployment",
+  ],
+},
+
+  {
+    id: "devops",
+    title: "DevOps & Automation",
     items: [
-      "IT Consulting & Strategy — roadmaps & architecture",
-      "Managed IT Services — service desk & admin",
-      "E-commerce & B2B/B2C Platforms — portals & ERPs",
-      "Hardware/Software Sales & Leasing",
-      "Migration Services — Exchange -> Office365/Google",
-      "Professional Services — training, project mgmt, contracts",
+      "CI/CD Pipeline Setup",
+      "Infrastructure as Code",
+      "Container Orchestration",
+      "Cloud Automation",
+      "Monitoring & Observability",
+      "DevSecOps Integration",
     ],
   },
-];
+  {
+    id: "marketing",
+    title: "Digital Marketing",
+    items: [
+      "Search Engine Optimization",
+      "Pay-Per-Click Advertising",
+      "Social Media Management",
+      "Content Marketing",
+      "Email Marketing",
+      "Analytics & Reporting",
+    ],
+  },
+  
+]
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // mobile
@@ -156,9 +215,10 @@ setIsMenuOpen(false);
                 <button
                   onFocus={openMega}
                   onBlur={delayedCloseMega}
-                  className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium"
+                  className="text-gray-700 text-xl font-[play] hover:text-[#168acc] font-medium flex iteam-center"
                 >
                   Services
+                  <ChevronDown className="mt-1" size={20}/>
                 </button>
 
                 {/* FIXED Mega menu: centered, responsive width, high z-index */}
