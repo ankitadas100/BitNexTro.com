@@ -154,9 +154,7 @@ const servicesData = [
       "Analytics & Reporting",
     ],
   },
-  
-]
-
+];
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false); // mobile
   const [isMegaOpen, setIsMegaOpen] = useState(false); // desktop hover/focus
@@ -206,7 +204,6 @@ setIsMenuOpen(false);
               >
                 Home
               </Link>
-
               <div
                 className="relative"
                 onMouseEnter={openMega}
