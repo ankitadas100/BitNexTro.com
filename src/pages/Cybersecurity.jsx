@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 const services = [
   {
@@ -45,102 +45,15 @@ const services = [
   },
 ];
 
-function GridBackground() {
-  return (
-    <div
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 0,
-        overflow: "hidden",
-        pointerEvents: "none",
-      }}
-    >
-      {/* Tech grid */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          backgroundImage: `
-            linear-gradient(rgba(220,20,20,0.07) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(220,20,20,0.07) 1px, transparent 1px)
-          `,
-          backgroundSize: "50px 50px",
-        }}
-      />
-      {/* Radial glow center */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          width: "900px",
-          height: "900px",
-          background:
-            "radial-gradient(circle, rgba(180,0,0,0.18) 0%, transparent 70%)",
-          borderRadius: "50%",
-        }}
-      />
-      {/* Scanline effect */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background:
-            "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px)",
-        }}
-      />
-    </div>
-  );
-}
-
-function GlitchText({ text }) {
-  return (
-    <span style={{ position: "relative", display: "inline-block" }}>
-      <style>{`
-        @keyframes glitch1 {
-          0%, 90%, 100% { clip-path: none; transform: none; }
-          92% { clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); transform: translateX(-4px); }
-          94% { clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); transform: translateX(4px); }
-          96% { clip-path: none; transform: none; }
-        }
-        @keyframes pulse-glow {
-          0%, 100% { text-shadow: 0 0 20px rgba(255,40,40,0.8), 0 0 40px rgba(255,40,40,0.4); }
-          50% { text-shadow: 0 0 40px rgba(255,40,40,1), 0 0 80px rgba(255,40,40,0.6), 0 0 120px rgba(255,40,40,0.3); }
-        }
-        @keyframes scanline {
-          0% { top: -100%; }
-          100% { top: 100%; }
-        }
-        @keyframes fadeInUp {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes borderPulse {
-          0%, 100% { border-color: rgba(220,20,20,0.4); box-shadow: 0 0 15px rgba(220,20,20,0.1), inset 0 0 15px rgba(220,20,20,0.05); }
-          50% { border-color: rgba(255,60,60,0.8); box-shadow: 0 0 30px rgba(220,20,20,0.3), inset 0 0 20px rgba(220,20,20,0.1); }
-        }
-        @keyframes floatUp {
-          0% { transform: translateY(0px); }
-          50% { transform: translateY(-6px); }
-          100% { transform: translateY(0px); }
-        }
-        @keyframes ticker {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
-      <span
-        style={{
-          animation: "glitch1 8s infinite, pulse-glow 3s ease-in-out infinite",
-        }}
-      >
-        {text}
-      </span>
-    </span>
-  );
-}
+const tickerItems = [
+  "THREAT LEVEL: ELEVATED",
+  "SYSTEMS SECURED: 10M+",
+  "ACTIVE MONITORING: 24/7",
+  "ZERO-DAY PROTECTION: ACTIVE",
+  "ENCRYPTION: AES-256",
+  "SOC OPERATIONS: LIVE",
+  "INTRUSION PREVENTION: ON",
+];
 
 function ServiceCard({ service, index }) {
   const [hovered, setHovered] = useState(false);
@@ -150,180 +63,207 @@ function ServiceCard({ service, index }) {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        position: "relative",
-        borderRadius: "16px",
-        border: `1px solid ${hovered ? "rgba(255,60,60,0.7)" : "rgba(220,20,20,0.25)"}`,
-        background: hovered
-          ? "rgba(100,5,5,0.35)"
-          : "rgba(40,2,2,0.25)",
-        backdropFilter: "blur(20px)",
-        WebkitBackdropFilter: "blur(20px)",
-        padding: "32px 28px",
-        cursor: "default",
-        transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
-        boxShadow: hovered
-          ? "0 0 40px rgba(220,20,20,0.3), inset 0 0 30px rgba(220,20,20,0.08), 0 20px 60px rgba(0,0,0,0.5)"
-          : "0 8px 32px rgba(0,0,0,0.4), inset 0 0 0px transparent",
-        transform: hovered ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)",
-        animation: `fadeInUp 0.6s ease forwards`,
         animationDelay: `${index * 0.1}s`,
+        animation: "fadeInUp 0.6s ease forwards",
         opacity: 0,
-        overflow: "hidden",
       }}
+      className={`
+        relative rounded-2xl p-8 cursor-default overflow-hidden
+        border transition-all duration-500
+        backdrop-blur-xl
+        ${hovered
+          ? "border-blue-400/60 bg-blue-950/40 shadow-[0_0_40px_rgba(59,130,246,0.25),0_20px_60px_rgba(0,0,0,0.6)] -translate-y-2 scale-[1.02]"
+          : "border-blue-800/30 bg-slate-900/40 shadow-[0_8px_32px_rgba(0,0,0,0.4)]"
+        }
+      `}
     >
       {/* Corner accents */}
-      {["topLeft", "topRight", "bottomLeft", "bottomRight"].map((corner) => (
+      {[
+        "top-2 left-2 border-t-2 border-l-2",
+        "top-2 right-2 border-t-2 border-r-2",
+        "bottom-2 left-2 border-b-2 border-l-2",
+        "bottom-2 right-2 border-b-2 border-r-2",
+      ].map((cls, i) => (
         <div
-          key={corner}
-          style={{
-            position: "absolute",
-            width: "14px",
-            height: "14px",
-            borderColor: hovered ? "rgba(255,80,80,0.9)" : "rgba(220,20,20,0.5)",
-            borderStyle: "solid",
-            borderWidth: 0,
-            ...(corner === "topLeft" && { top: 8, left: 8, borderTopWidth: 2, borderLeftWidth: 2 }),
-            ...(corner === "topRight" && { top: 8, right: 8, borderTopWidth: 2, borderRightWidth: 2 }),
-            ...(corner === "bottomLeft" && { bottom: 8, left: 8, borderBottomWidth: 2, borderLeftWidth: 2 }),
-            ...(corner === "bottomRight" && { bottom: 8, right: 8, borderBottomWidth: 2, borderRightWidth: 2 }),
-            transition: "border-color 0.3s ease",
-          }}
+          key={i}
+          className={`absolute w-3 h-3 transition-colors duration-300 ${cls} ${
+            hovered ? "border-blue-400/80" : "border-blue-700/40"
+          }`}
         />
       ))}
 
-      {/* Glow line top */}
-      <div style={{
-        position: "absolute",
-        top: 0, left: "20%", right: "20%",
-        height: "1px",
-        background: hovered
-          ? "linear-gradient(90deg, transparent, rgba(255,60,60,0.9), transparent)"
-          : "linear-gradient(90deg, transparent, rgba(220,20,20,0.3), transparent)",
-        transition: "all 0.4s ease",
-      }} />
+      {/* Top glow line */}
+      <div
+        className={`absolute top-0 left-1/4 right-1/4 h-px transition-all duration-400 ${
+          hovered
+            ? "bg-gradient-to-r from-transparent via-blue-400/90 to-transparent"
+            : "bg-gradient-to-r from-transparent via-blue-700/30 to-transparent"
+        }`}
+      />
 
       {/* Icon */}
-      <div style={{
-        fontSize: "36px",
-        marginBottom: "16px",
-        display: "inline-block",
-        filter: hovered ? "drop-shadow(0 0 12px rgba(255,60,60,0.9))" : "drop-shadow(0 0 4px rgba(220,20,20,0.4))",
-        transition: "filter 0.3s ease",
-        animation: hovered ? "floatUp 2s ease-in-out infinite" : "none",
-      }}>
+      <div
+        className="text-4xl mb-4 inline-block transition-all duration-300"
+        style={{
+          filter: hovered
+            ? "drop-shadow(0 0 12px rgba(96,165,250,0.9))"
+            : "drop-shadow(0 0 4px rgba(59,130,246,0.4))",
+          animation: hovered ? "floatUp 2s ease-in-out infinite" : "none",
+        }}
+      >
         {service.icon}
       </div>
 
       {/* Title */}
-      <h3 style={{
-        fontFamily: "'Orbitron', 'Courier New', monospace",
-        fontSize: "15px",
-        fontWeight: 700,
-        color: hovered ? "#fff" : "#f0d0d0",
-        marginBottom: "12px",
-        letterSpacing: "0.5px",
-        textTransform: "uppercase",
-        transition: "color 0.3s ease",
-      }}>
+      <h3
+        className={`font-mono text-sm font-bold uppercase tracking-wider mb-3 transition-colors duration-300 ${
+          hovered ? "text-white" : "text-blue-100/80"
+        }`}
+        style={{ fontFamily: "'Orbitron', 'Courier New', monospace" }}
+      >
         {service.title}
       </h3>
 
       {/* Description */}
-      <p style={{
-        fontFamily: "'Share Tech Mono', monospace",
-        fontSize: "13px",
-        lineHeight: 1.7,
-        color: hovered ? "rgba(255,220,220,0.9)" : "rgba(230,180,180,0.65)",
-        marginBottom: "20px",
-        transition: "color 0.3s ease",
-      }}>
+      <p
+        className={`font-mono text-xs leading-relaxed mb-5 transition-colors duration-300 ${
+          hovered ? "text-blue-100/90" : "text-slate-400/80"
+        }`}
+      >
         {service.desc}
       </p>
 
       {/* Stat badge */}
-      <div style={{
-        display: "inline-flex",
-        alignItems: "center",
-        gap: "8px",
-        padding: "6px 14px",
-        borderRadius: "100px",
-        border: `1px solid ${hovered ? "rgba(255,80,80,0.7)" : "rgba(220,20,20,0.3)"}`,
-        background: hovered ? "rgba(180,10,10,0.4)" : "rgba(100,5,5,0.2)",
-        transition: "all 0.3s ease",
-      }}>
-        <div style={{
-          width: "6px", height: "6px",
-          borderRadius: "50%",
-          background: hovered ? "#ff4444" : "#cc2222",
-          boxShadow: hovered ? "0 0 8px #ff4444" : "none",
-          transition: "all 0.3s ease",
-        }} />
-        <span style={{
-          fontFamily: "'Orbitron', monospace",
-          fontSize: "11px",
-          fontWeight: 700,
-          color: hovered ? "#ff9999" : "#cc6666",
-          letterSpacing: "1px",
-          transition: "color 0.3s ease",
-        }}>
-          {service.stat}
-        </span>
+      <div
+        className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-xs font-bold tracking-widest uppercase transition-all duration-300 ${
+          hovered
+            ? "border-blue-400/60 bg-blue-900/50 text-blue-300"
+            : "border-blue-800/30 bg-blue-950/20 text-blue-500/70"
+        }`}
+        style={{ fontFamily: "'Orbitron', monospace" }}
+      >
+        <div
+          className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${
+            hovered ? "bg-blue-400 shadow-[0_0_8px_#60a5fa]" : "bg-blue-700"
+          }`}
+        />
+        {service.stat}
       </div>
     </div>
   );
 }
 
 export default function Cybersecurity() {
-  const tickerItems = [
-    "THREAT LEVEL: ELEVATED",
-    "SYSTEMS SECURED: 10M+",
-    "ACTIVE MONITORING: 24/7",
-    "ZERO-DAY PROTECTION: ACTIVE",
-    "ENCRYPTION: AES-256",
-    "SOC OPERATIONS: LIVE",
-    "INTRUSION PREVENTION: ON",
-  ];
-
   return (
-    <div style={{
-      minHeight: "100vh",
-      background: "#0f0101",
-      color: "#fff",
-      fontFamily: "'Share Tech Mono', monospace",
-      position: "relative",
-      overflow: "hidden",
-    }}>
-      {/* Import fonts */}
+    <div
+      className="min-h-screen text-white relative overflow-hidden"
+      style={{
+        background: "linear-gradient(135deg, #020818 0%, #050d24 40%, #030a1a 70%, #020510 100%)",
+        fontFamily: "'Share Tech Mono', monospace",
+      }}
+    >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+
+        @keyframes glitch1 {
+          0%, 90%, 100% { clip-path: none; transform: none; }
+          92% { clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%); transform: translateX(-4px); }
+          94% { clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%); transform: translateX(4px); }
+          96% { clip-path: none; transform: none; }
+        }
+        @keyframes pulseGlow {
+          0%, 100% { text-shadow: 0 0 20px rgba(96,165,250,0.8), 0 0 40px rgba(59,130,246,0.4); }
+          50% { text-shadow: 0 0 40px rgba(96,165,250,1), 0 0 80px rgba(59,130,246,0.6), 0 0 120px rgba(59,130,246,0.3); }
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes floatUp {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-6px); }
+        }
+        @keyframes ticker {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @keyframes dotPulse {
+          0%, 100% { box-shadow: 0 0 6px #3b82f6; }
+          50% { box-shadow: 0 0 16px #60a5fa, 0 0 30px rgba(96,165,250,0.4); }
+        }
+        .glitch-text {
+          animation: glitch1 8s infinite, pulseGlow 3s ease-in-out infinite;
+        }
+        .fade-in-1 { animation: fadeInUp 0.6s ease 0.1s forwards; opacity: 0; }
+        .fade-in-2 { animation: fadeInUp 0.6s ease 0.3s forwards; opacity: 0; }
+        .fade-in-3 { animation: fadeInUp 0.6s ease 0.5s forwards; opacity: 0; }
+        .fade-in-4 { animation: fadeInUp 0.6s ease 0.7s forwards; opacity: 0; }
+        .fade-in-5 { animation: fadeInUp 0.6s ease 0.9s forwards; opacity: 0; }
       `}</style>
 
-      <GridBackground />
+      {/* Background grid */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
+        }}
+      />
+
+      {/* Radial glow */}
+      <div
+        className="fixed pointer-events-none z-0"
+        style={{
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          width: "900px",
+          height: "900px",
+          background: "radial-gradient(circle, rgba(30,64,175,0.2) 0%, transparent 70%)",
+          borderRadius: "50%",
+        }}
+      />
+
+      {/* Top corner glow accents */}
+      <div
+        className="fixed top-0 right-0 pointer-events-none z-0"
+        style={{
+          width: "400px",
+          height: "400px",
+          background: "radial-gradient(circle at top right, rgba(59,130,246,0.12) 0%, transparent 60%)",
+        }}
+      />
+      <div
+        className="fixed bottom-0 left-0 pointer-events-none z-0"
+        style={{
+          width: "400px",
+          height: "400px",
+          background: "radial-gradient(circle at bottom left, rgba(99,102,241,0.1) 0%, transparent 60%)",
+        }}
+      />
 
       {/* Ticker bar */}
-      <div style={{
-        position: "relative",
-        zIndex: 10,
-        background: "rgba(180,10,10,0.85)",
-        backdropFilter: "blur(10px)",
-        borderBottom: "1px solid rgba(255,60,60,0.4)",
-        overflow: "hidden",
-        padding: "8px 0",
-      }}>
-        <div style={{
-          display: "flex",
-          gap: "60px",
-          animation: "ticker 20s linear infinite",
-          whiteSpace: "nowrap",
-        }}>
+      <div
+        className="relative z-10 overflow-hidden py-2 border-b"
+        style={{
+          background: "rgba(15,30,80,0.7)",
+          backdropFilter: "blur(10px)",
+          borderColor: "rgba(59,130,246,0.25)",
+        }}
+      >
+        <div
+          className="flex gap-16 whitespace-nowrap"
+          style={{ animation: "ticker 25s linear infinite" }}
+        >
           {[...tickerItems, ...tickerItems].map((item, i) => (
-            <span key={i} style={{
-              fontFamily: "'Orbitron', monospace",
-              fontSize: "11px",
-              letterSpacing: "2px",
-              color: "#fff",
-              opacity: 0.9,
-            }}>
+            <span
+              key={i}
+              className="text-blue-300/80 tracking-widest"
+              style={{ fontFamily: "'Orbitron', monospace", fontSize: "10px", letterSpacing: "2px" }}
+            >
               ⚡ {item}
             </span>
           ))}
@@ -331,195 +271,137 @@ export default function Cybersecurity() {
       </div>
 
       {/* Main content */}
-      <div style={{
-        position: "relative",
-        zIndex: 10,
-        maxWidth: "1200px",
-        margin: "0 auto",
-        padding: "80px 24px 80px",
-      }}>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
+
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "80px" }}>
+        <div className="text-center mb-20">
+
           {/* Badge */}
-          <div style={{
-            display: "inline-flex",
-            alignItems: "center",
-            gap: "10px",
-            padding: "8px 20px",
-            borderRadius: "100px",
-            border: "1px solid rgba(255,60,60,0.5)",
-            background: "rgba(180,10,10,0.2)",
-            backdropFilter: "blur(10px)",
-            marginBottom: "28px",
-            animation: "fadeInUp 0.6s ease forwards",
-          }}>
-            <div style={{
-              width: "8px", height: "8px",
-              borderRadius: "50%",
-              background: "#ff3333",
-              boxShadow: "0 0 10px #ff3333, 0 0 20px rgba(255,50,50,0.5)",
-              animation: "pulse-glow 1.5s ease infinite",
-            }} />
-            <span style={{
-              fontFamily: "'Orbitron', monospace",
-              fontSize: "11px",
-              letterSpacing: "3px",
-              color: "#ff9999",
-              textTransform: "uppercase",
-            }}>
+          <div
+            className="fade-in-1 inline-flex items-center gap-2.5 px-5 py-2 rounded-full border mb-7"
+            style={{
+              border: "1px solid rgba(59,130,246,0.4)",
+              background: "rgba(15,30,80,0.35)",
+              backdropFilter: "blur(12px)",
+            }}
+          >
+            <div
+              className="w-2 h-2 rounded-full bg-blue-400"
+              style={{ animation: "dotPulse 1.5s ease infinite" }}
+            />
+            <span
+              className="text-blue-300 uppercase tracking-[3px]"
+              style={{ fontFamily: "'Orbitron', monospace", fontSize: "11px" }}
+            >
               Enterprise Security Solutions
             </span>
           </div>
 
-          {/* Main heading */}
-          <h1 style={{
-            fontFamily: "'Orbitron', monospace",
-            fontSize: "clamp(36px, 6vw, 72px)",
-            fontWeight: 900,
-            lineHeight: 1.1,
-            marginBottom: "24px",
-            color: "#fff",
-            textTransform: "uppercase",
-            letterSpacing: "2px",
-            animation: "fadeInUp 0.6s ease 0.2s forwards",
-            opacity: 0,
-          }}>
-            <GlitchText text="CYBER" />
+          {/* Heading */}
+          <h1
+            className="fade-in-2 font-black uppercase leading-tight mb-6 text-white"
+            style={{
+              fontFamily: "'Orbitron', monospace",
+              fontSize: "clamp(36px, 6vw, 72px)",
+              letterSpacing: "2px",
+            }}
+          >
+            <span className="glitch-text">CYBER</span>
             <br />
-            <span style={{
-              background: "linear-gradient(135deg, #ff3333, #cc0000, #ff6666)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}>
+            <span
+              style={{
+                background: "linear-gradient(135deg, #60a5fa, #3b82f6, #818cf8, #60a5fa)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
               SECURITY
             </span>
           </h1>
 
           {/* Subtitle */}
-          <p style={{
-            fontFamily: "'Share Tech Mono', monospace",
-            fontSize: "clamp(14px, 2vw, 17px)",
-            color: "rgba(255,180,180,0.7)",
-            maxWidth: "600px",
-            margin: "0 auto 40px",
-            lineHeight: 1.8,
-            animation: "fadeInUp 0.6s ease 0.4s forwards",
-            opacity: 0,
-          }}>
+          <p
+            className="fade-in-3 text-slate-400 max-w-xl mx-auto mb-10 leading-relaxed"
+            style={{ fontSize: "clamp(13px, 2vw, 16px)", lineHeight: 1.9 }}
+          >
             Advanced threat protection for the modern enterprise. Defend your digital
             perimeter with military-grade security infrastructure.
           </p>
 
-          {/* CTA buttons */}
-          <div style={{
-            display: "flex",
-            gap: "16px",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            animation: "fadeInUp 0.6s ease 0.6s forwards",
-            opacity: 0,
-          }}>
-            <button style={{
-              fontFamily: "'Orbitron', monospace",
-              fontSize: "13px",
-              fontWeight: 700,
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              padding: "14px 32px",
-              borderRadius: "8px",
-              border: "none",
-              background: "linear-gradient(135deg, #cc0000, #ff2222)",
-              color: "#fff",
-              cursor: "pointer",
-              boxShadow: "0 0 30px rgba(200,0,0,0.5), 0 4px 20px rgba(0,0,0,0.4)",
-              transition: "all 0.3s ease",
-            }}
-            onMouseEnter={e => {
-              e.target.style.boxShadow = "0 0 50px rgba(255,50,50,0.8), 0 4px 20px rgba(0,0,0,0.4)";
-              e.target.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={e => {
-              e.target.style.boxShadow = "0 0 30px rgba(200,0,0,0.5), 0 4px 20px rgba(0,0,0,0.4)";
-              e.target.style.transform = "translateY(0)";
-            }}>
+          {/* CTA Buttons */}
+          <div className="fade-in-4 flex gap-4 justify-center flex-wrap">
+            <button
+              className="font-bold uppercase tracking-widest px-8 py-3.5 rounded-lg text-white text-sm transition-all duration-300 hover:-translate-y-1"
+              style={{
+                fontFamily: "'Orbitron', monospace",
+                background: "linear-gradient(135deg, #1d4ed8, #3b82f6)",
+                boxShadow: "0 0 30px rgba(59,130,246,0.45), 0 4px 20px rgba(0,0,0,0.4)",
+              }}
+              onMouseEnter={e => e.target.style.boxShadow = "0 0 50px rgba(96,165,250,0.75), 0 4px 20px rgba(0,0,0,0.4)"}
+              onMouseLeave={e => e.target.style.boxShadow = "0 0 30px rgba(59,130,246,0.45), 0 4px 20px rgba(0,0,0,0.4)"}
+            >
               Get Protected Now
             </button>
-            <button style={{
-              fontFamily: "'Orbitron', monospace",
-              fontSize: "13px",
-              fontWeight: 700,
-              letterSpacing: "2px",
-              textTransform: "uppercase",
-              padding: "14px 32px",
-              borderRadius: "8px",
-              border: "1px solid rgba(220,20,20,0.5)",
-              background: "rgba(40,2,2,0.4)",
-              backdropFilter: "blur(10px)",
-              color: "#ff9999",
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-            }}
-            onMouseEnter={e => {
-              e.target.style.borderColor = "rgba(255,60,60,0.9)";
-              e.target.style.background = "rgba(100,5,5,0.4)";
-              e.target.style.transform = "translateY(-2px)";
-            }}
-            onMouseLeave={e => {
-              e.target.style.borderColor = "rgba(220,20,20,0.5)";
-              e.target.style.background = "rgba(40,2,2,0.4)";
-              e.target.style.transform = "translateY(0)";
-            }}>
+            <button
+              className="font-bold uppercase tracking-widest px-8 py-3.5 rounded-lg text-blue-300 text-sm transition-all duration-300 hover:-translate-y-1"
+              style={{
+                fontFamily: "'Orbitron', monospace",
+                border: "1px solid rgba(59,130,246,0.4)",
+                background: "rgba(15,30,80,0.3)",
+                backdropFilter: "blur(10px)",
+              }}
+              onMouseEnter={e => {
+                e.target.style.borderColor = "rgba(96,165,250,0.8)";
+                e.target.style.background = "rgba(30,58,138,0.35)";
+              }}
+              onMouseLeave={e => {
+                e.target.style.borderColor = "rgba(59,130,246,0.4)";
+                e.target.style.background = "rgba(15,30,80,0.3)";
+              }}
+            >
               View Threat Report
             </button>
           </div>
         </div>
 
         {/* Stats bar */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-          gap: "1px",
-          background: "rgba(220,20,20,0.2)",
-          border: "1px solid rgba(220,20,20,0.25)",
-          borderRadius: "16px",
-          overflow: "hidden",
-          marginBottom: "80px",
-          backdropFilter: "blur(20px)",
-          animation: "fadeInUp 0.6s ease 0.7s forwards",
-          opacity: 0,
-        }}>
+        <div
+          className="fade-in-5 grid grid-cols-2 md:grid-cols-4 rounded-2xl overflow-hidden mb-20 border"
+          style={{
+            borderColor: "rgba(59,130,246,0.2)",
+            background: "rgba(10,20,50,0.5)",
+            backdropFilter: "blur(20px)",
+            gap: "1px",
+            backgroundColor: "rgba(59,130,246,0.1)",
+          }}
+        >
           {[
             { val: "99.8%", label: "Uptime SLA" },
             { val: "<30s", label: "Response Time" },
             { val: "500+", label: "Enterprise Clients" },
             { val: "24/7", label: "SOC Monitoring" },
           ].map((stat, i) => (
-            <div key={i} style={{
-              padding: "28px 20px",
-              textAlign: "center",
-              background: "rgba(20,1,1,0.6)",
-              transition: "background 0.3s ease",
-            }}
-            onMouseEnter={e => e.currentTarget.style.background = "rgba(80,5,5,0.5)"}
-            onMouseLeave={e => e.currentTarget.style.background = "rgba(20,1,1,0.6)"}
+            <div
+              key={i}
+              className="py-7 px-5 text-center transition-colors duration-300 cursor-default group"
+              style={{ background: "rgba(8,16,40,0.7)" }}
+              onMouseEnter={e => e.currentTarget.style.background = "rgba(20,40,90,0.6)"}
+              onMouseLeave={e => e.currentTarget.style.background = "rgba(8,16,40,0.7)"}
             >
-              <div style={{
-                fontFamily: "'Orbitron', monospace",
-                fontSize: "28px",
-                fontWeight: 900,
-                color: "#ff4444",
-                textShadow: "0 0 20px rgba(255,60,60,0.6)",
-                marginBottom: "6px",
-              }}>
+              <div
+                className="text-blue-400 font-black mb-1.5"
+                style={{
+                  fontFamily: "'Orbitron', monospace",
+                  fontSize: "28px",
+                  textShadow: "0 0 20px rgba(96,165,250,0.6)",
+                }}
+              >
                 {stat.val}
               </div>
-              <div style={{
-                fontFamily: "'Share Tech Mono', monospace",
-                fontSize: "11px",
-                color: "rgba(255,180,180,0.6)",
-                letterSpacing: "2px",
-                textTransform: "uppercase",
-              }}>
+              <div
+                className="text-slate-500 uppercase tracking-widest"
+                style={{ fontSize: "10px", letterSpacing: "2px" }}
+              >
                 {stat.label}
               </div>
             </div>
@@ -527,96 +409,74 @@ export default function Cybersecurity() {
         </div>
 
         {/* Section label */}
-        <div style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "16px",
-          marginBottom: "48px",
-        }}>
-          <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, transparent, rgba(220,20,20,0.5))" }} />
-          <span style={{
-            fontFamily: "'Orbitron', monospace",
-            fontSize: "12px",
-            letterSpacing: "4px",
-            color: "#cc4444",
-            textTransform: "uppercase",
-          }}>
+        <div className="flex items-center gap-4 mb-12">
+          <div className="flex-1 h-px bg-gradient-to-r from-transparent to-blue-700/40" />
+          <span
+            className="text-blue-500/80 uppercase tracking-[4px] text-xs"
+            style={{ fontFamily: "'Orbitron', monospace" }}
+          >
             Our Services
           </span>
-          <div style={{ flex: 1, height: "1px", background: "linear-gradient(90deg, rgba(220,20,20,0.5), transparent)" }} />
+          <div className="flex-1 h-px bg-gradient-to-l from-transparent to-blue-700/40" />
         </div>
 
         {/* Services grid */}
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
-          gap: "24px",
-        }}>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />
           ))}
         </div>
 
         {/* Bottom CTA */}
-        <div style={{
-          marginTop: "80px",
-          textAlign: "center",
-          padding: "60px 40px",
-          borderRadius: "20px",
-          border: "1px solid rgba(220,20,20,0.3)",
-          background: "rgba(30,2,2,0.4)",
-          backdropFilter: "blur(20px)",
-          position: "relative",
-          overflow: "hidden",
-        }}>
-          <div style={{
-            position: "absolute",
-            top: 0, left: "30%", right: "30%",
-            height: "1px",
-            background: "linear-gradient(90deg, transparent, rgba(255,60,60,0.8), transparent)",
-          }} />
-          <h2 style={{
-            fontFamily: "'Orbitron', monospace",
-            fontSize: "clamp(22px, 4vw, 38px)",
-            fontWeight: 900,
-            textTransform: "uppercase",
-            letterSpacing: "2px",
-            marginBottom: "16px",
-            color: "#fff",
-          }}>
+        <div
+          className="mt-20 text-center py-16 px-10 rounded-2xl border relative overflow-hidden"
+          style={{
+            borderColor: "rgba(59,130,246,0.25)",
+            background: "rgba(10,20,60,0.45)",
+            backdropFilter: "blur(20px)",
+          }}
+        >
+          <div
+            className="absolute top-0 left-1/4 right-1/4 h-px"
+            style={{ background: "linear-gradient(90deg, transparent, rgba(96,165,250,0.7), transparent)" }}
+          />
+          {/* Glow orb */}
+          <div
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
+            style={{
+              width: "400px",
+              height: "200px",
+              background: "radial-gradient(ellipse, rgba(30,64,175,0.15) 0%, transparent 70%)",
+            }}
+          />
+          <h2
+            className="font-black uppercase tracking-widest text-white mb-4 relative z-10"
+            style={{
+              fontFamily: "'Orbitron', monospace",
+              fontSize: "clamp(20px, 4vw, 36px)",
+            }}
+          >
             Ready to Fortify Your Defenses?
           </h2>
-          <p style={{
-            color: "rgba(255,180,180,0.6)",
-            marginBottom: "32px",
-            fontSize: "14px",
-            lineHeight: 1.8,
-          }}>
+          <p className="text-slate-400 mb-8 text-sm leading-relaxed max-w-md mx-auto relative z-10">
             Get a free security assessment and discover your vulnerabilities before attackers do.
           </p>
-          <button style={{
-            fontFamily: "'Orbitron', monospace",
-            fontSize: "14px",
-            fontWeight: 700,
-            letterSpacing: "2px",
-            textTransform: "uppercase",
-            padding: "16px 48px",
-            borderRadius: "8px",
-            border: "none",
-            background: "linear-gradient(135deg, #aa0000, #ee1111, #aa0000)",
-            color: "#fff",
-            cursor: "pointer",
-            boxShadow: "0 0 40px rgba(200,0,0,0.6)",
-            transition: "all 0.3s ease",
-          }}
-          onMouseEnter={e => {
-            e.target.style.boxShadow = "0 0 70px rgba(255,50,50,0.9)";
-            e.target.style.transform = "scale(1.05)";
-          }}
-          onMouseLeave={e => {
-            e.target.style.boxShadow = "0 0 40px rgba(200,0,0,0.6)";
-            e.target.style.transform = "scale(1)";
-          }}>
+          <button
+            className="relative z-10 font-bold uppercase tracking-widest px-12 py-4 rounded-lg text-white text-sm transition-all duration-300"
+            style={{
+              fontFamily: "'Orbitron', monospace",
+              background: "linear-gradient(135deg, #1e3a8a, #2563eb, #1e3a8a)",
+              boxShadow: "0 0 40px rgba(37,99,235,0.55)",
+            }}
+            onMouseEnter={e => {
+              e.target.style.boxShadow = "0 0 70px rgba(96,165,250,0.85)";
+              e.target.style.transform = "scale(1.05)";
+            }}
+            onMouseLeave={e => {
+              e.target.style.boxShadow = "0 0 40px rgba(37,99,235,0.55)";
+              e.target.style.transform = "scale(1)";
+            }}
+          >
             Schedule Free Assessment →
           </button>
         </div>

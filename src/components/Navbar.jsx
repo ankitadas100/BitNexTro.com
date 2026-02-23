@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router";
 const servicesData = [
   {
     id: "hardware",
+    link:"hardware",
     title: "Hardware Support",
     items: [
       "On-Site Hardware Repair",
@@ -19,6 +20,7 @@ const servicesData = [
 {
   id: "network",
   title: "Network Services",
+  link:"network",
   items: [
     "LAN & WAN Setup and Configuration",
     "Router & Switch Installation",
@@ -35,6 +37,7 @@ const servicesData = [
 {
   id: "amc",
   title: "Annual Maintenance Contract (AMC)",
+  link:"amc",
   items: [
     "24/7 Technical Support",
     "Scheduled Preventive Maintenance",
@@ -48,6 +51,7 @@ const servicesData = [
   {
     id: "backup",
     title: "Data Backup & Recovery",
+    link:"databackup",
     items: [
       "Automated Cloud Backup",
       "Disaster Recovery Planning",
@@ -60,6 +64,7 @@ const servicesData = [
   {
     id: "cloud",
     title: "Cloud Services",
+    link:"cloudservice",
     items: [
       "Cloud Migration",
       "Microsoft 365 (O365)",
@@ -72,6 +77,7 @@ const servicesData = [
   {
     id: "managed",
     title: "Managed Services",
+    link:"managedservice",
     items: [
       "Managed IT Support",
       "Network Monitoring & Management",
@@ -84,6 +90,7 @@ const servicesData = [
   {
     id: "security",
     title: "Cybersecurity",
+    link:"cybersecurity",
     items: [
       "Threat Detection & Response",
       "Security Audits & Assessments",
@@ -96,6 +103,7 @@ const servicesData = [
   {
     id: "remote",
     title: "24/7 Remote Support",
+    link:"remote",
     items: [
       "24/7 Helpdesk",
       "Remote Desktop Support",
@@ -108,6 +116,7 @@ const servicesData = [
   {
     id: "webdev",
     title: "Website & App Development",
+    link:"website",
     items: [
       "Custom Website Design",
       "Web Application Development",
@@ -120,6 +129,7 @@ const servicesData = [
   {
   id: "artificial",
   title: "Artificial Intelligence",
+  link:"artifical",
   items: [
     "Machine Learning Solutions",
     "Natural Language Processing (NLP)",
@@ -133,6 +143,7 @@ const servicesData = [
   {
     id: "devops",
     title: "DevOps & Automation",
+    link:"devops",
     items: [
       "CI/CD Pipeline Setup",
       "Infrastructure as Code",
@@ -145,6 +156,7 @@ const servicesData = [
   {
     id: "marketing",
     title: "Digital Marketing",
+    link:"digital",
     items: [
       "Search Engine Optimization",
       "Pay-Per-Click Advertising",
@@ -164,6 +176,9 @@ export default function Navbar() {
   const megaTimeout = useRef(null);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
   const location = useLocation()
+  const handleno=()=>{
+     setIsMegaOpen(false)
+  }
   const openMega = () => {
     if (megaTimeout.current) clearTimeout(megaTimeout.current);
     setIsMegaOpen(true);
@@ -232,21 +247,23 @@ setIsMenuOpen(false);
                   <div className="grid grid-cols-3 gap-6 p-6">
                     {/* Left: categories */}
                     <div className="col-span-1">
-                      <ul className="space-y-2">
+                     <ul className="space-y-2">
                         {servicesData.map((cat) => (
-                          <li
+                         <li
                             key={cat.id}
                             onMouseEnter={() => setActiveCategory(cat.id)}
                             onFocus={() => setActiveCategory(cat.id)}
                           >
-                            <button
+                            
+                             <Link to={cat.link}><button 
+                             onClick={handleno}
                               className={`w-full text-left px-3 py-2 rounded-md text-sm font-semibold transition-colors ${activeCategory === cat.id
                                 ? "bg-[#eef6ff] text-[#0b63a8]"
                                 : "text-gray-700 hover:bg-gray-50"
                                 }`}
                             >
                               {cat.title}
-                            </button>
+                            </button></Link>
                           </li>
                         ))}
                       </ul>

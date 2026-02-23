@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 
 const services = [
   {
@@ -43,26 +43,28 @@ const services = [
     desc: "Ongoing care packages to keep your site secure, updated, and evolving with your business.",
     tag: "Support",
   },
-]
+];
 
 export default function Websitedev() {
-  const [hovered, setHovered] = useState(null)
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const [hovered, setHovered] = useState(null);
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePos({ x: e.clientX, y: e.clientY })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+    const handleMouseMove = (e) => setMousePos({ x: e.clientX, y: e.clientY });
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
-    <div style={styles.wrapper}>
+    <div
+      className="relative min-h-screen overflow-hidden"
+      style={{
+        background: "linear-gradient(155deg, #010510 0%, #030c20 22%, #051228 48%, #071530 68%, #030c20 100%)",
+        fontFamily: "'Outfit', sans-serif",
+      }}
+    >
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600&display=swap');
-
-       
 
         @keyframes drift1 {
           0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
@@ -81,7 +83,7 @@ export default function Websitedev() {
           from { opacity: 0; transform: translateY(40px); }
           to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes shimmer {
+        @keyframes shimmerBlue {
           0%   { background-position: -200% center; }
           100% { background-position: 200% center; }
         }
@@ -97,10 +99,10 @@ export default function Websitedev() {
 
         .card-glass {
           position: relative;
-          background: rgba(255, 255, 255, 0.06);
+          background: rgba(255, 255, 255, 0.04);
           backdrop-filter: blur(24px);
           -webkit-backdrop-filter: blur(24px);
-          border: 1px solid rgba(255, 180, 200, 0.16);
+          border: 1px solid rgba(59, 130, 246, 0.12);
           border-radius: 24px;
           padding: 36px 30px 30px;
           cursor: pointer;
@@ -114,35 +116,29 @@ export default function Websitedev() {
         }
         .card-glass:hover {
           transform: translateY(-10px) scale(1.025);
-          background: rgba(255, 255, 255, 0.11);
-          border-color: rgba(255, 60, 120, 0.55);
+          background: rgba(30, 58, 138, 0.18);
+          border-color: rgba(96, 165, 250, 0.5);
           box-shadow:
-            0 0 0 1px rgba(255, 60, 120, 0.3),
-            0 20px 50px rgba(180, 0, 60, 0.5),
-            0 0 80px rgba(255, 40, 110, 0.22),
-            inset 0 1px 0 rgba(255, 200, 220, 0.18);
+            0 0 0 1px rgba(96, 165, 250, 0.25),
+            0 20px 50px rgba(29, 78, 216, 0.4),
+            0 0 80px rgba(59, 130, 246, 0.18),
+            inset 0 1px 0 rgba(147, 197, 253, 0.15);
         }
         .card-glass:hover .card-icon {
           animation: iconBounce 0.65s ease forwards;
-          color: #ff4d9e !important;
-          text-shadow: 0 0 20px rgba(255,60,150,0.95), 0 0 50px rgba(255,40,130,0.55) !important;
+          color: #60a5fa !important;
+          text-shadow: 0 0 20px rgba(96,165,250,0.95), 0 0 50px rgba(59,130,246,0.55) !important;
         }
-        .card-glass:hover .card-glow-spot {
-          opacity: 1;
-        }
-        .card-glass:hover .card-symbol {
-          color: rgba(255, 90, 140, 0.55);
-        }
-        .card-glass:hover .card-bar {
-          transform: scaleX(1);
-        }
+        .card-glass:hover .card-glow-spot { opacity: 1; }
+        .card-glass:hover .card-symbol { color: rgba(96, 165, 250, 0.45); }
+        .card-glass:hover .card-bar { transform: scaleX(1); }
         .card-glass:hover .card-tag {
-          background: rgba(255, 50, 110, 0.22);
-          border-color: rgba(255, 70, 130, 0.6);
-          color: #ffb3cc;
+          background: rgba(37, 99, 235, 0.2);
+          border-color: rgba(96, 165, 250, 0.55);
+          color: #bfdbfe;
         }
         .card-glass:hover .card-title {
-          background: linear-gradient(135deg, #fff 0%, #ffcce0 100%);
+          background: linear-gradient(135deg, #fff 0%, #bfdbfe 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
         }
@@ -150,8 +146,8 @@ export default function Websitedev() {
         .card-icon {
           font-size: 38px;
           line-height: 1;
-          color: rgba(255, 175, 205, 0.8);
-          text-shadow: 0 0 14px rgba(255,100,150,0.45);
+          color: rgba(147, 197, 253, 0.75);
+          text-shadow: 0 0 14px rgba(59,130,246,0.45);
           display: block;
           margin-bottom: 22px;
           transition: color 0.3s, text-shadow 0.3s;
@@ -164,7 +160,7 @@ export default function Websitedev() {
           font-size: 10px;
           font-weight: 600;
           letter-spacing: 2px;
-          color: rgba(255, 175, 200, 0.22);
+          color: rgba(96, 165, 250, 0.18);
           transition: color 0.35s;
         }
         .card-glow-spot {
@@ -174,7 +170,7 @@ export default function Websitedev() {
           width: 200px;
           height: 200px;
           border-radius: 50%;
-          background: radial-gradient(circle, rgba(255,50,110,0.28) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
           opacity: 0;
           transition: opacity 0.45s;
           pointer-events: none;
@@ -185,7 +181,7 @@ export default function Websitedev() {
           left: 0;
           height: 2px;
           width: 100%;
-          background: linear-gradient(90deg, #cc0044, #ff4d9e, #ff80b5, #cc0044);
+          background: linear-gradient(90deg, #1d4ed8, #60a5fa, #818cf8, #1d4ed8);
           transform: scaleX(0);
           transform-origin: left;
           transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -197,12 +193,12 @@ export default function Websitedev() {
           font-size: 9.5px;
           font-weight: 600;
           letter-spacing: 2.5px;
-          color: rgba(255,155,185,0.75);
-          border: 1px solid rgba(255,100,145,0.22);
+          color: rgba(147, 197, 253, 0.7);
+          border: 1px solid rgba(59, 130, 246, 0.2);
           border-radius: 100px;
           padding: 4px 12px;
           margin-bottom: 14px;
-          background: rgba(255,50,110,0.07);
+          background: rgba(37, 99, 235, 0.08);
           transition: all 0.3s;
           animation: tagPulse 3.5s ease-in-out infinite;
           text-transform: uppercase;
@@ -217,106 +213,214 @@ export default function Websitedev() {
           transition: all 0.3s;
         }
 
+        .stat-num {
+          font-family: 'Playfair Display', serif;
+          font-size: 40px;
+          font-weight: 900;
+          background: linear-gradient(135deg, #fff 0%, #bfdbfe 55%, #60a5fa 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-size: 200%;
+          animation: shimmerBlue 4s linear infinite;
+          line-height: 1;
+        }
+
         .cta-btn {
           font-family: 'Outfit', sans-serif;
           font-size: 12px;
           font-weight: 600;
           letter-spacing: 3px;
           color: #fff;
-          background: linear-gradient(135deg, rgba(200,10,70,0.65), rgba(255,50,130,0.45));
-          border: 1px solid rgba(255,90,150,0.4);
+          background: linear-gradient(135deg, rgba(29,78,216,0.65), rgba(59,130,246,0.45));
+          border: 1px solid rgba(96,165,250,0.4);
           border-radius: 100px;
           padding: 18px 56px;
           cursor: pointer;
           backdrop-filter: blur(12px);
-          box-shadow: 0 0 30px rgba(200,10,70,0.45), inset 0 1px 0 rgba(255,200,220,0.18);
+          box-shadow: 0 0 30px rgba(29,78,216,0.45), inset 0 1px 0 rgba(147,197,253,0.15);
           transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
           text-transform: uppercase;
         }
         .cta-btn:hover {
           transform: translateY(-3px) scale(1.05);
-          background: linear-gradient(135deg, rgba(200,10,70,0.9), rgba(255,50,130,0.75));
-          box-shadow: 0 0 60px rgba(255,10,90,0.75), 0 0 120px rgba(200,0,70,0.35), inset 0 1px 0 rgba(255,200,220,0.28);
-          border-color: rgba(255,110,160,0.7);
+          background: linear-gradient(135deg, rgba(29,78,216,0.9), rgba(59,130,246,0.75));
+          box-shadow: 0 0 60px rgba(59,130,246,0.7), 0 0 120px rgba(29,78,216,0.3), inset 0 1px 0 rgba(147,197,253,0.25);
+          border-color: rgba(147,197,253,0.65);
           letter-spacing: 4px;
         }
 
-        .stat-num {
-          font-family: 'Playfair Display', serif;
-          font-size: 40px;
-          font-weight: 900;
-          background: linear-gradient(135deg, #fff 0%, #ffb3cc 55%, #ff4d8f 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-size: 200%;
-          animation: shimmer 4s linear infinite;
-          line-height: 1;
-        }
+        .orb1 { animation: drift1 14s ease-in-out infinite; }
+        .orb2 { animation: drift2 18s ease-in-out infinite; }
+        .orb3 { animation: drift3 10s ease-in-out infinite; }
       `}</style>
 
       {/* Cursor spotlight */}
-      <div style={{
-        position: 'fixed',
-        left: mousePos.x - 250,
-        top: mousePos.y - 250,
-        width: 500,
-        height: 500,
-        borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,20,90,0.055) 0%, transparent 70%)',
-        pointerEvents: 'none',
-        zIndex: 1,
-        transition: 'left 0.08s ease-out, top 0.08s ease-out',
-      }} />
+      <div
+        className="fixed rounded-full pointer-events-none z-10"
+        style={{
+          left: mousePos.x - 250,
+          top: mousePos.y - 250,
+          width: 500,
+          height: 500,
+          background: "radial-gradient(circle, rgba(59,130,246,0.055) 0%, transparent 70%)",
+          transition: "left 0.08s ease-out, top 0.08s ease-out",
+        }}
+      />
 
       {/* Ambient orbs */}
-      <div style={{ ...styles.orb, ...styles.orb1 }} />
-      <div style={{ ...styles.orb, ...styles.orb2 }} />
-      <div style={{ ...styles.orb, ...styles.orb3 }} />
+      <div
+        className="orb1 absolute rounded-full pointer-events-none"
+        style={{
+          top: "-15%", left: "-12%",
+          width: "650px", height: "650px",
+          background: "radial-gradient(circle, rgba(29,78,216,0.32) 0%, transparent 70%)",
+          filter: "blur(2px)",
+        }}
+      />
+      <div
+        className="orb2 absolute rounded-full pointer-events-none"
+        style={{
+          bottom: "-20%", right: "-15%",
+          width: "750px", height: "750px",
+          background: "radial-gradient(circle, rgba(59,130,246,0.2) 0%, transparent 70%)",
+          filter: "blur(4px)",
+        }}
+      />
+      <div
+        className="orb3 absolute rounded-full pointer-events-none"
+        style={{
+          top: "45%", left: "38%",
+          width: "380px", height: "380px",
+          background: "radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)",
+        }}
+      />
 
-      {/* Grain */}
-      <div style={styles.grain} />
+      {/* Grain overlay */}
+      <div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E")`,
+          backgroundRepeat: "repeat",
+          backgroundSize: "256px 256px",
+          mixBlendMode: "overlay",
+        }}
+      />
 
       {/* Decorative diagonal lines */}
-      <div style={styles.diagLine1} />
-      <div style={styles.diagLine2} />
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "8%", right: "6%",
+          width: "1px", height: "220px",
+          background: "linear-gradient(to bottom, transparent, rgba(96,165,250,0.25), transparent)",
+          transform: "rotate(18deg)",
+        }}
+      />
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          bottom: "18%", left: "4%",
+          width: "1px", height: "160px",
+          background: "linear-gradient(to bottom, transparent, rgba(96,165,250,0.18), transparent)",
+          transform: "rotate(-14deg)",
+        }}
+      />
 
-      <div style={styles.container}>
+      {/* Grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(59,130,246,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(59,130,246,0.05) 1px, transparent 1px)
+          `,
+          backgroundSize: "50px 50px",
+        }}
+      />
 
-        {/* ── Header ── */}
-        <div style={styles.header}>
-          <div style={styles.eyebrowRow}>
-            <div style={styles.eyebrowLine} />
-            <span style={styles.eyebrow}>WEB DEVELOPMENT</span>
-            <div style={styles.eyebrowLine} />
+      {/* Main container */}
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20">
+
+        {/* Header */}
+        <div className="text-center mb-18" style={{ marginBottom: "72px" }}>
+          {/* Eyebrow */}
+          <div className="flex items-center justify-center gap-3.5 mb-7">
+            <div
+              className="w-10 h-px"
+              style={{ background: "linear-gradient(90deg, transparent, rgba(96,165,250,0.55))" }}
+            />
+            <span
+              className="text-blue-400/60 uppercase tracking-[4px] font-semibold"
+              style={{ fontSize: "10px" }}
+            >
+              WEB DEVELOPMENT
+            </span>
+            <div
+              className="w-10 h-px"
+              style={{ background: "linear-gradient(90deg, rgba(96,165,250,0.55), transparent)" }}
+            />
           </div>
 
-          <h1 style={styles.h1}>
-            We Build Websites<br />
-            <em style={styles.h1Italic}>That Convert.</em>
+          {/* H1 */}
+          <h1
+            className="font-black text-white leading-tight mb-6"
+            style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(42px, 6vw, 82px)",
+              lineHeight: 1.07,
+              textShadow: "0 0 80px rgba(59,130,246,0.22)",
+            }}
+          >
+            We Build Websites
+            <br />
+            <em
+              style={{
+                fontStyle: "italic",
+                background: "linear-gradient(135deg, #bfdbfe 0%, #60a5fa 45%, #3b82f6 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              That Convert.
+            </em>
           </h1>
 
-          <p style={styles.lead}>
+          <p
+            className="text-slate-400 max-w-lg mx-auto font-light leading-relaxed mb-12"
+            style={{ fontSize: "16.5px", lineHeight: "1.78" }}
+          >
             From concept to launch — crafting digital experiences that captivate audiences,
             elevate brands, and drive measurable results for ambitious businesses.
           </p>
 
           {/* Stats */}
-          <div style={styles.statsRow}>
+          <div className="flex justify-center gap-16 flex-wrap">
             {[
               { num: "150+", label: "Projects Delivered" },
               { num: "98%", label: "Client Satisfaction" },
               { num: "0.8s", label: "Avg Load Time" },
             ].map((s, i) => (
-              <div key={i} style={styles.stat}>
+              <div key={i} className="text-center">
                 <div className="stat-num">{s.num}</div>
-                <div style={styles.statLabel}>{s.label}</div>
+                <div
+                  className="text-blue-400/50 uppercase tracking-widest mt-1.5 font-medium"
+                  style={{ fontSize: "10.5px", letterSpacing: "1.5px" }}
+                >
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* ── Services Grid ── */}
-        <div style={styles.servicesGrid}>
+        {/* Services grid */}
+        <div
+          className="grid gap-5 mb-18"
+          style={{
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            marginBottom: "72px",
+          }}
+        >
           {services.map((svc, i) => (
             <div
               key={i}
@@ -330,243 +434,101 @@ export default function Websitedev() {
               <span className="card-icon">{svc.icon}</span>
               <span className="card-tag">{svc.tag}</span>
               <h3 className="card-title">{svc.title}</h3>
-              <p style={styles.cardDesc}>{svc.desc}</p>
+              <p
+                className="font-light leading-relaxed"
+                style={{
+                  fontFamily: "'Outfit', sans-serif",
+                  fontSize: "13.5px",
+                  color: "rgba(148,163,184,0.75)",
+                  lineHeight: "1.72",
+                }}
+              >
+                {svc.desc}
+              </p>
               <div className="card-bar" />
             </div>
           ))}
         </div>
 
-        {/* ── CTA ── */}
-        <div style={styles.ctaWrap}>
-          <div style={styles.ctaGlass}>
-            <div style={styles.ctaGlowSpot} />
-            <p style={styles.ctaEyebrow}>READY TO LAUNCH?</p>
-            <h2 style={styles.ctaHeading}>
-              Let's build something<br />
-              <em style={styles.h1Italic}>extraordinary.</em>
+        {/* CTA */}
+        <div className="flex justify-center">
+          <div
+            className="relative text-center rounded-3xl overflow-hidden w-full max-w-xl"
+            style={{
+              background: "rgba(255,255,255,0.04)",
+              backdropFilter: "blur(28px)",
+              WebkitBackdropFilter: "blur(28px)",
+              border: "1px solid rgba(59,130,246,0.15)",
+              padding: "64px 72px",
+              boxShadow: "0 40px 100px rgba(15,40,120,0.4), inset 0 1px 0 rgba(147,197,253,0.08)",
+            }}
+          >
+            {/* Inner glow */}
+            <div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none"
+              style={{
+                width: "420px", height: "420px",
+                background: "radial-gradient(circle, rgba(29,78,216,0.12) 0%, transparent 70%)",
+              }}
+            />
+
+            <p
+              className="text-blue-400/55 font-semibold uppercase tracking-[4px] mb-5"
+              style={{ fontFamily: "'Outfit', sans-serif", fontSize: "10px" }}
+            >
+              READY TO LAUNCH?
+            </p>
+
+            <h2
+              className="text-white font-black leading-tight mb-4 relative z-10"
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(28px, 4vw, 46px)",
+                lineHeight: "1.18",
+              }}
+            >
+              Let's build something
+              <br />
+              <em
+                style={{
+                  fontStyle: "italic",
+                  background: "linear-gradient(135deg, #bfdbfe 0%, #60a5fa 45%, #3b82f6 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                extraordinary.
+              </em>
             </h2>
-            <p style={styles.ctaDesc}>
+
+            <p
+              className="font-light leading-relaxed mb-9 relative z-10"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "15px",
+                color: "rgba(148,163,184,0.65)",
+                lineHeight: "1.72",
+              }}
+            >
               Book a free discovery call and let's map out your vision together.
             </p>
-            <button className="cta-btn">Start Your Project</button>
-            <p style={styles.ctaNote}>No commitment required · Response within 24 hrs</p>
+
+            <button className="cta-btn relative z-10">Start Your Project</button>
+
+            <p
+              className="mt-4 relative z-10"
+              style={{
+                fontFamily: "'Outfit', sans-serif",
+                fontSize: "11px",
+                color: "rgba(96,165,250,0.35)",
+                letterSpacing: "0.5px",
+              }}
+            >
+              No commitment required · Response within 24 hrs
+            </p>
           </div>
         </div>
-
       </div>
     </div>
-  )
-}
-
-const styles = {
-  wrapper: {
-    position: 'relative',
-    minHeight: '100vh',
-    background: 'linear-gradient(155deg, #160006 0%, #380010 22%, #6b0025 48%, #8c1835 68%, #380010 100%)',
-    overflow: 'hidden',
-    fontFamily: "'Outfit', sans-serif",
-  },
-  grain: {
-    position: 'fixed',
-    inset: 0,
-    backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")`,
-    backgroundRepeat: 'repeat',
-    backgroundSize: '256px 256px',
-    pointerEvents: 'none',
-    zIndex: 1,
-    mixBlendMode: 'overlay',
-  },
-  orb: {
-    position: 'absolute',
-    borderRadius: '50%',
-    pointerEvents: 'none',
-  },
-  orb1: {
-    top: '-15%',
-    left: '-12%',
-    width: '650px',
-    height: '650px',
-    background: 'radial-gradient(circle, rgba(210,10,70,0.38) 0%, transparent 70%)',
-    animation: 'drift1 14s ease-in-out infinite',
-    filter: 'blur(2px)',
-  },
-  orb2: {
-    bottom: '-20%',
-    right: '-15%',
-    width: '750px',
-    height: '750px',
-    background: 'radial-gradient(circle, rgba(255,50,120,0.22) 0%, transparent 70%)',
-    animation: 'drift2 18s ease-in-out infinite',
-    filter: 'blur(4px)',
-  },
-  orb3: {
-    top: '45%',
-    left: '38%',
-    width: '380px',
-    height: '380px',
-    background: 'radial-gradient(circle, rgba(190,0,55,0.18) 0%, transparent 70%)',
-    animation: 'drift3 10s ease-in-out infinite',
-  },
-  diagLine1: {
-    position: 'absolute',
-    top: '8%',
-    right: '6%',
-    width: '1px',
-    height: '220px',
-    background: 'linear-gradient(to bottom, transparent, rgba(255,70,130,0.28), transparent)',
-    transform: 'rotate(18deg)',
-  },
-  diagLine2: {
-    position: 'absolute',
-    bottom: '18%',
-    left: '4%',
-    width: '1px',
-    height: '160px',
-    background: 'linear-gradient(to bottom, transparent, rgba(255,70,130,0.18), transparent)',
-    transform: 'rotate(-14deg)',
-  },
-  container: {
-    position: 'relative',
-    zIndex: 2,
-    maxWidth: '1120px',
-    margin: '0 auto',
-    padding: '80px 24px',
-  },
-  header: {
-    textAlign: 'center',
-    marginBottom: '72px',
-  },
-  eyebrowRow: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '14px',
-    justifyContent: 'center',
-    marginBottom: '28px',
-  },
-  eyebrowLine: {
-    width: '38px',
-    height: '1px',
-    background: 'linear-gradient(90deg, transparent, rgba(255,90,140,0.65))',
-  },
-  eyebrow: {
-    fontFamily: "'Outfit', sans-serif",
-    fontSize: '10px',
-    fontWeight: '600',
-    letterSpacing: '4px',
-    color: 'rgba(255,145,180,0.65)',
-  },
-  h1: {
-    fontFamily: "'Playfair Display', serif",
-    fontSize: 'clamp(42px, 6vw, 82px)',
-    fontWeight: '900',
-    color: '#fff',
-    lineHeight: 1.07,
-    marginBottom: '24px',
-    textShadow: '0 0 80px rgba(255,40,110,0.28)',
-  },
-  h1Italic: {
-    fontStyle: 'italic',
-    background: 'linear-gradient(135deg, #ffb3cc 0%, #ff4d8f 45%, #cc0044 100%)',
-    WebkitBackgroundClip: 'text',
-    WebkitTextFillColor: 'transparent',
-  },
-  lead: {
-    fontSize: '16.5px',
-    fontWeight: '300',
-    color: 'rgba(255,195,210,0.65)',
-    maxWidth: '560px',
-    margin: '0 auto 48px',
-    lineHeight: '1.78',
-  },
-  statsRow: {
-    display: 'flex',
-    justifyContent: 'center',
-    gap: '64px',
-    flexWrap: 'wrap',
-  },
-  stat: {
-    textAlign: 'center',
-  },
-  statLabel: {
-    fontFamily: "'Outfit', sans-serif",
-    fontSize: '10.5px',
-    fontWeight: '500',
-    letterSpacing: '1.5px',
-    color: 'rgba(255,150,185,0.5)',
-    marginTop: '7px',
-    textTransform: 'uppercase',
-  },
-  servicesGrid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '22px',
-    marginBottom: '72px',
-  },
-  cardDesc: {
-    fontFamily: "'Outfit', sans-serif",
-    fontSize: '13.5px',
-    fontWeight: '300',
-    color: 'rgba(255,195,210,0.6)',
-    lineHeight: '1.72',
-  },
-  ctaWrap: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  ctaGlass: {
-    position: 'relative',
-    background: 'rgba(255,255,255,0.055)',
-    backdropFilter: 'blur(28px)',
-    WebkitBackdropFilter: 'blur(28px)',
-    border: '1px solid rgba(255,140,175,0.18)',
-    borderRadius: '32px',
-    padding: '64px 72px',
-    textAlign: 'center',
-    maxWidth: '640px',
-    width: '100%',
-    overflow: 'hidden',
-    boxShadow: '0 40px 100px rgba(140,0,45,0.45), inset 0 1px 0 rgba(255,195,215,0.1)',
-  },
-  ctaGlowSpot: {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: '420px',
-    height: '420px',
-    borderRadius: '50%',
-    background: 'radial-gradient(circle, rgba(200,10,65,0.13) 0%, transparent 70%)',
-    pointerEvents: 'none',
-  },
-  ctaEyebrow: {
-    fontFamily: "'Outfit', sans-serif",
-    fontSize: '10px',
-    fontWeight: '600',
-    letterSpacing: '4px',
-    color: 'rgba(255,120,160,0.6)',
-    marginBottom: '20px',
-  },
-  ctaHeading: {
-    fontFamily: "'Playfair Display', serif",
-    fontSize: 'clamp(28px, 4vw, 46px)',
-    fontWeight: '900',
-    color: '#fff',
-    lineHeight: '1.18',
-    marginBottom: '18px',
-  },
-  ctaDesc: {
-    fontFamily: "'Outfit', sans-serif",
-    fontSize: '15px',
-    fontWeight: '300',
-    color: 'rgba(255,185,205,0.6)',
-    marginBottom: '36px',
-    lineHeight: '1.72',
-  },
-  ctaNote: {
-    fontFamily: "'Outfit', sans-serif",
-    fontSize: '11px',
-    color: 'rgba(255,140,175,0.38)',
-    marginTop: '16px',
-    letterSpacing: '0.5px',
-  },
+  );
 }
