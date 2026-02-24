@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import logo_final_p from "../assets/f_logo.png"
-import { ChevronDown, Menu, X } from "lucide-react";
+import { ChevronDown, Library, Menu, X } from "lucide-react";
 import Head from "./Head";
 import { Link, useLocation } from "react-router";
 const servicesData = [
@@ -248,16 +248,19 @@ setIsMenuOpen(false);
                     {/* Left: categories */}
                     <div className="col-span-1">
                      <ul className="space-y-2">
+                     
                         {servicesData.map((cat) => (
-                         <li
-                            key={cat.id}
+                          
+                         < li Library
+                         
+                             key={cat.id}
                             onMouseEnter={() => setActiveCategory(cat.id)}
                             onFocus={() => setActiveCategory(cat.id)}
                           >
                             
                              <Link to={cat.link}><button 
                              onClick={handleno}
-                              className={`w-full text-left px-3 py-2 rounded-md text-sm font-semibold transition-colors ${activeCategory === cat.id
+                              className={`w-full text-left px-3 py-2 rounded-md text-sm font-semibold transition-colors cursor-pointer ${activeCategory === cat.id
                                 ? "bg-[#eef6ff] text-[#0b63a8]"
                                 : "text-gray-700 hover:bg-gray-50"
                                 }`}
@@ -366,7 +369,7 @@ setIsMenuOpen(false);
               <div className="px-4">
                 <button
                   onClick={() => setMobileServicesOpen((s) => !s)}
-                  className="w-full text-left py-2 text-gray-700 font-medium"
+                  className="w-full text-left py-2 text-gray-700 font-medium cursor-pointer"
                 >
                   Services
                 </button>
