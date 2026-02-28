@@ -182,9 +182,7 @@ const servicesData = [
     "Security Hardening & Firewall Configuration",
     "Data Center Migration & Maintenance"
   ]
-}
-  
-  
+  },
 ]
 
 export default function Navbar() {
@@ -239,7 +237,6 @@ setIsMenuOpen(false);
               >
                 Home
               </Link>
-
               <div
                 className="relative"
                 onMouseEnter={openMega}
